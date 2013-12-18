@@ -2,6 +2,7 @@ MODE=DEBUG
 CC=g++
 CFLAGS=-std=c++11
 LDFLAGS=
+PATHEXEC=bin/
 EXEC=inherit
 SRC=
 OBJ=$(SRC:.cpp=.o)
@@ -13,7 +14,7 @@ endif
 all: $(EXEC)
 
 inherit: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o ${PATHEXEC}$@ $^ $(LDFLAGS)
 
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
