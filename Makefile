@@ -1,10 +1,10 @@
 MODE=DEBUG
 CC=g++
-CFLAGS=-std=c++11
+CFLAGS=-std=c++0x
 LDFLAGS=
 PATHEXEC=bin/
 EXEC=inherit
-SRC=
+SRC=insaInherit.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp
 OBJ=$(SRC:.cpp=.o)
 
 ifeq ($(MODE),DEBUG)
@@ -18,6 +18,18 @@ inherit: $(OBJ)
 
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+Point.o: Point.h
+
+Circle.o: Circle.h GeoElt.h Point.h
+
+Line.o: Line.h GeoElt.h Point.h
+
+Polyline.o: Polyline.h GeoElt.h Point.h
+
+Rectangle.o: Rectangle.h GeoElt.h Polyline.h
+
+AO.o: GeoElt.h
 
 #test: $(EXEC)
 #	@make -C Tests
