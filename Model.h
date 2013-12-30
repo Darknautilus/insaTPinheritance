@@ -1,27 +1,24 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <string>
 #include <map>
 
 #include "GeoElt.h"
 
 class Model
 {
-	using namespace std;
-	
 	public:
 		Model();
 		virtual ~Model();
 
-		bool Add(GeoElt*, string);
-		bool Delete(string);
-		bool Move(string, Point&);
-		bool SaveInFile(string);
+		bool Add(GeoElt*, std::string);
+		bool Delete(std::string);
+		bool Move(std::string, Point*);
+		bool SaveInFile(std::string);
 
 	protected:
 		std::list<GeoElt*> elements;
-		std::map<string,int> eltIndexes;
+		std::map<std::string,int> eltIndexes;
 };
 
 #endif

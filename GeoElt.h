@@ -2,6 +2,9 @@
 #define GEOELT_H
 
 #include <list>
+#include <string>
+
+#include "Point.h"
 
 class GeoElt
 {

@@ -8,23 +8,23 @@ Model::~Model()
 {
 }
 
-bool Model::Add(GeoElt *pElt, string pName)
+bool Model::Add(GeoElt *pElt, std::string pName)
 {
 
 	return false;
 }
 
-bool Model::Delete(string pName)
+bool Model::Delete(std::string pName)
 {
 	return false;
 }
 
-bool Model::Move(string pName, Point &pDir)
+bool Model::Move(std::string pName, Point *pDir)
 {
 	return false;
 }
 
-bool Model::SaveInFile(string pFilename)
+bool Model::SaveInFile(std::string pFilename)
 {
 	return false;
 }
