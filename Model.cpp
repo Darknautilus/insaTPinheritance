@@ -10,7 +10,7 @@ Model::~Model()
 	eltIndexes.erase(eltIndexes.begin(),eltIndexes.end());
 }
 
-bool Model::Add(GeoElt *pElt, string pName)
+bool Model::Add(GeoElt *pElt, std::string pName)
 {
 	elements.push_back(pElt);	
 	itElt itDebut = elements.begin();
@@ -23,7 +23,7 @@ bool Model::Add(GeoElt *pElt, string pName)
 	return true;
 }
 
-bool Model::Delete(string pName)
+bool Model::Delete(std::string pName)
 {
 	for(itIndex it = eltIndexes.begin();it!=eltIndexes.end();++it) //on cherche l'index de l'eltGeo dans le vecteur  grâce a pName
 	{
@@ -40,7 +40,7 @@ bool Model::Delete(string pName)
 	return false;
 }
 
-bool Model::Move(string pName, Point &pDir)
+bool Model::Move(std::string pName, Point *pDir)
 {
 	int index;
 	bool trouve =false;
@@ -58,7 +58,7 @@ bool Model::Move(string pName, Point &pDir)
 	return true;
 }
 
-bool Model::SaveInFile(string pFilename)
+bool Model::SaveInFile(std::string pFilename)
 {
 	ofstream save;
 	save.open(pFilename, ios::out);

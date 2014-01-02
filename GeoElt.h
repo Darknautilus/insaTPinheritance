@@ -3,6 +3,11 @@
 
 #include <list>
 #include <string>
+<<<<<<< HEAD
+=======
+
+#include "Point.h"
+>>>>>>> 4dc019fce05dd37a2608d06742f3fcac910c5618
 
 class GeoElt
 {

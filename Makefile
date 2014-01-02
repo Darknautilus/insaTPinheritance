@@ -4,20 +4,23 @@ CFLAGS=-std=c++0x
 LDFLAGS=
 PATHEXEC=bin/
 EXEC=inherit
-SRC=insaInherit.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp
+TARGET=$(addprefix $(PATHEXEC), $(EXEC))
+SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp Controller.cpp
 OBJ=$(SRC:.cpp=.o)
 
 ifeq ($(MODE),DEBUG)
 	CFLAGS:=$(CFLAGS) -g
 endif
 
-all: $(EXEC)
+all: $(TARGET)
 
-inherit: $(OBJ)
-	$(CC) -o ${PATHEXEC}$@ $^ $(LDFLAGS)
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+Model.o: GeoElt.h
 
 Point.o: Point.h
 
@@ -29,7 +32,17 @@ Polyline.o: Polyline.h GeoElt.h Point.h
 
 Rectangle.o: Rectangle.h GeoElt.h Polyline.h
 
-AO.o: GeoElt.h
+AO.o: AO.h GeoElt.h
+
+Command.o: Command.h GeoElt.h Model.h
+
+AddCommand.o: AddCommand.h Command.h
+
+DeleteCommand.o: DeleteCommand.h Command.h
+
+MoveCommand.o: MoveCommand.h Command.h
+
+Controller.o: Controller.h Command.h
 
 #test: $(EXEC)
 #	@make -C Tests
