@@ -3,12 +3,15 @@
 
 #include <string>
 #include <map>
-
+#include <vector>
 #include "GeoElt.h"
 
 class Model
 {
 	using namespace std;
+
+	typedef vector<GeoElt*>::iterator itElt;
+	typedef map<string,int>::iterator itIndex;
 	
 	public:
 		Model();
@@ -20,8 +23,8 @@ class Model
 		bool SaveInFile(string);
 
 	protected:
-		std::list<GeoElt*> elements;
-		std::map<string,int> eltIndexes;
+		vector<GeoElt*> elements;
+		map<string,int> eltIndexes;
 };
 
 #endif

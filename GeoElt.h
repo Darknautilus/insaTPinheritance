@@ -2,6 +2,7 @@
 #define GEOELT_H
 
 #include <list>
+#include <string>
 
 class GeoElt
 {
@@ -10,6 +11,7 @@ class GeoElt
 		virtual ~GeoElt() {}
 
 		virtual bool Move(int,int) = 0;
+		virtual std::string Display()=0;
 };
 
 #endif

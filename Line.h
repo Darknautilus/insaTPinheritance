@@ -3,18 +3,21 @@
 
 #include "GeoElt.h"
 #include "Point.h"
+#include <string>
+using namespace std;
 
 class Line : public GeoElt
 {
 	public:
-		Line(Point*,Point*);
+		Line(string,Point*,Point*);
 		virtual ~Line();
 
 		bool Move(int,int);
+		string Display();
 
 	protected:
-		std::list<Point*> ends;
-
+		list<Point*> ends;
+		string name;
 };
 
 #endif

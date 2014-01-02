@@ -2,11 +2,14 @@
 #define AO_H
 
 #include "GeoElt.h"
+#include <string>
+using namespace std;
 
 class AO : public GeoElt
 {
 	public:
-		AO();
+		AO(string aName):name(aName)
+		{}
 		virtual ~AO();
 
 		bool Add(GeoElt*);
@@ -14,7 +17,7 @@ class AO : public GeoElt
 
 	protected:
 		std::list<GeoElt*> elements;
-
+		string name;
 };
 
 #endif

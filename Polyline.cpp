@@ -1,6 +1,6 @@
 #include "Polyline.h"
 
-Polyline::Polyline()
+Polyline::Polyline(string aName):name(aName)
 {
 }
 
@@ -30,4 +30,19 @@ bool Polyline::Move(int pX, int pY)
 		moved = (*it)->Move(pX,pY);
 	}
 	return moved;
+}
+
+string Polyline::Display()
+{
+	string description;
+	description = "PL " << this.name << " " ;
+        for(std::list<Point*>::iterator it = points.begin();
+                        it != points.end();
+                        ++ it)
+        {
+		descrption << (*it)->getX() << " " << (*it)->getY() << " " ;
+	}
+	description << endl;
+
+	return description;
 }
