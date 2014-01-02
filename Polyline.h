@@ -15,6 +15,7 @@ class Polyline : public GeoElt
 		bool Add(Point*);
 		bool Move(int,int);
 		string Display();
+		string GetName() const;
 		
 	protected:
 		list<Point*> points;

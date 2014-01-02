@@ -13,6 +13,7 @@ class Rectangle : public GeoElt
 
 		bool Move(int,int);
 		string Display();
+		string GetName() const;
 
 	protected:
 		Polyline edge;

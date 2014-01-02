@@ -8,8 +8,7 @@ using namespace std;
 class AO : public GeoElt
 {
 	public:
-		AO(string aName):name(aName)
-		{}
+		AO(string );
 		virtual ~AO();
 
 		bool Add(GeoElt*);

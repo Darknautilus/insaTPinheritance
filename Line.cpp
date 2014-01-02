@@ -1,5 +1,6 @@
 #include "Line.h"
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 Line::Line(string aName,Point* pFirst, Point* pSecond):name(aName)
@@ -26,16 +27,16 @@ bool Line::Move(int pX, int pY)
 
 string Line::Display()
 {
-        string description;
-        description = "L " << this.name<<" " ;
+        ostringstream description;
+        description << "L " << this.name<<" " ;
 	for(std::list<Point*>::iterator it = ends.begin();
                         it != ends.end();
                         ++it)
         {
-		description << (*it)->GetX() << " " << (*it)->GetY() << " " ;
+		description << (*it)->getX() << " " << (*it)->getY() << " " ;
 	}
 	
 	description << endl;
-	return description;
+	return description.str();
 }
 

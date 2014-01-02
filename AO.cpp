@@ -1,9 +1,11 @@
 #include "AO.h"
+#include <sstream>
+#include <iostream>
+using namespace std;
 
-/*
-AO::AO()
+AO::AO(string aName):name(aName)
 {
-}*/
+}
 
 AO::~AO()
 {
@@ -28,8 +30,8 @@ bool AO::Move(int pX,int pY)
 
 string AO::Display()
 {
-	string description;
-	description = "AO " << this.name ;
+	ostringstream description;
+	description << "AO " << this.name ;
         for(std::list<GeoElt*>::iterator it = elements.begin();
                         it != elements.end();
                         ++it)
@@ -38,5 +40,5 @@ string AO::Display()
 	}
 	description <<endl;
 
-	return description;
+	return description.str();
 }
