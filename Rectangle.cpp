@@ -1,4 +1,7 @@
 #include "Rectangle.h"
+#include <sstream>
+#include <iostream>
+using namespace std;
 
 Rectangle::Rectangle(string aName, Point *pSupG, Point *pInfD):name(aName)
 {
@@ -19,7 +22,7 @@ bool Rectangle::Move(int pX, int pY)
 
 string Rectangle::Display()
 {
-	string description;
-	description = "R " << this.name << " " ; //todo 
+	ostringstream description;
+	description << "R " << this.name << " " ; //todo 
 	return " ";
 }

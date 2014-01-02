@@ -1,4 +1,7 @@
 #include "Polyline.h"
+#include <sstream>
+#include <iostream>
+using namespace std;
 
 Polyline::Polyline(string aName):name(aName)
 {
@@ -34,8 +37,8 @@ bool Polyline::Move(int pX, int pY)
 
 string Polyline::Display()
 {
-	string description;
-	description = "PL " << this.name << " " ;
+	ostringstream description;
+	description << "PL " << this.name << " " ;
         for(std::list<Point*>::iterator it = points.begin();
                         it != points.end();
                         ++ it)
@@ -44,5 +47,5 @@ string Polyline::Display()
 	}
 	description << endl;
 
-	return description;
+	return description.str();
 }
