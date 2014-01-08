@@ -31,7 +31,7 @@ bool Model::Delete(std::string pName)
 		{
 			int index = it->second;
 			elements.erase(index);	
-          		eltIndexes.erase(pName);
+      eltIndexes.erase(pName);
 			
 			return true;	
 		}
@@ -62,10 +62,14 @@ bool Model::SaveInFile(std::string pFilename)
 {
 	ofstream save;
 	save.open(pFilename, ios::out);
-	for (itElt it = elements.begin() ; it!=elements.end() ; ++it)
+	string aName;
+	for(itIndex it = eltIndexes.begin();  it!=eltIndexes.end();++it)
 	{
-		(*it)->Display();
-	}
+		aName = it->first;
+		index = it->second;
+
+		save << elements[index].Display(aName);
+	}	
 
 	return true;
 }

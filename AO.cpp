@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-AO::AO(string aName):name(aName)
+AO::AO()
 {
 }
 
@@ -11,32 +11,28 @@ AO::~AO()
 {
 }
 
-bool AO::Add(GeoElt *pElt)
+bool AO::Add(string aName, GeoElt *pElt)
 {
-	elements.push_back(pElt);
+	elements.insert(make_pair(aName,pElt));
 }
 
 bool AO::Move(int pX,int pY)
 {
 	bool moved = true;
-	for(std::list<GeoElt*>::iterator it = elements.begin();
-			it != elements.end();
-			++it)
+	for(std::map<string,GeoElt*>::iterator it = elements.begin();it != elements.end();++it)
 	{
-		moved = (*it)->Move(pX,pY);
+		moved = (it->second)->Move(pX,pY);
 	}
 	return moved;
 }
 
-string AO::Display()
+string AO::Display(string aName)
 {
 	ostringstream description;
-	description << "AO " << this.name ;
-        for(std::list<GeoElt*>::iterator it = elements.begin();
-                        it != elements.end();
-                        ++it)
+	description << "AO " << aName ;
+  for(std::map<string,GeoElt*>::iterator it = elements.begin(); it != elements.end();++it)
 	{
-		description << " " <<(*it)->getName(); //methode getName a faire pour chaque classe
+		description << " " << it->first;
 	}
 	description <<endl;
 

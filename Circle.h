@@ -9,17 +9,16 @@ using namespace std;
 class Circle : public GeoElt
 {
 	public:
-		Circle(string,int,int,int);
+		Circle(int,int,int);
 		virtual ~Circle();
 
 		bool Move(int,int);
-		string Display();
+		string Display(string);
 		string GetName()const;
 
 	protected:
 		int radius;
 		Point center;
-		string name;
 };
 
 #endif

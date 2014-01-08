@@ -9,17 +9,16 @@ using namespace std;
 class Polyline : public GeoElt
 {
 	public:
-		Polyline(string);
+		Polyline();
 		virtual ~Polyline();
 
 		bool Add(Point*);
 		bool Move(int,int);
-		string Display();
+		string Display(string);
 		string GetName() const;
 		
 	protected:
 		list<Point*> points;
-		string name;
 };
 
 #endif

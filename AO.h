@@ -3,20 +3,21 @@
 
 #include "GeoElt.h"
 #include <string>
+#include <map>
 using namespace std;
 
 class AO : public GeoElt
 {
 	public:
-		AO(string );
+		AO();
 		virtual ~AO();
 
-		bool Add(GeoElt*);
+		bool Add(string, GeoElt*);
 		bool Move(int,int);
+		string Display(string);
 
 	protected:
-		std::list<GeoElt*> elements;
-		string name;
+		std::map<string,GeoElt*> elements;
 };
 
 #endif

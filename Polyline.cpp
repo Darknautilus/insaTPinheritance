@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Polyline::Polyline(string aName):name(aName)
+Polyline::Polyline()
 {
 }
 
@@ -35,15 +35,13 @@ bool Polyline::Move(int pX, int pY)
 	return moved;
 }
 
-string Polyline::Display()
+string Polyline::Display(string aName)
 {
 	ostringstream description;
-	description << "PL " << this.name << " " ;
-        for(std::list<Point*>::iterator it = points.begin();
-                        it != points.end();
-                        ++ it)
-        {
-		descrption << (*it)->getX() << " " << (*it)->getY() << " " ;
+	description << "PL " << aName << " " ;
+  for(std::list<Point*>::iterator it = points.begin(); it != points.end(); ++ it)
+  {
+		description << (*it)->getX() << " " << (*it)->getY() << " " ;
 	}
 	description << endl;
 

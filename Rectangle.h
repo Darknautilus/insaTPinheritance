@@ -8,16 +8,16 @@ using namespace std;
 class Rectangle : public GeoElt
 {
 	public:
-		Rectangle(string,Point*,Point*);
+		Rectangle(Point*,Point*);
 		virtual ~Rectangle();
 
 		bool Move(int,int);
-		string Display();
+		string Display(string);
 		string GetName() const;
 
 	protected:
-		Polyline edge;
-		string name;
+		Point* PtSupG;
+		Point* PtInfD;
 };
 
 #endif

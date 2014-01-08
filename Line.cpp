@@ -3,7 +3,7 @@
 #include <sstream>
 using namespace std;
 
-Line::Line(string aName,Point* pFirst, Point* pSecond):name(aName)
+Line::Line(Point* pFirst, Point* pSecond)
 {
 	ends.push_back(pFirst);
 	ends.push_back(pSecond);
@@ -25,14 +25,12 @@ bool Line::Move(int pX, int pY)
 	return moved;
 }
 
-string Line::Display()
+string Line::Display(string aName)
 {
-        ostringstream description;
-        description << "L " << this.name<<" " ;
-	for(std::list<Point*>::iterator it = ends.begin();
-                        it != ends.end();
-                        ++it)
-        {
+	ostringstream description;
+  description << "L " << aName<<" " ;
+	for(std::list<Point*>::iterator it = ends.begin(); it != ends.end(); ++it)
+  {
 		description << (*it)->getX() << " " << (*it)->getY() << " " ;
 	}
 	

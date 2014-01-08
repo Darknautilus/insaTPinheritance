@@ -9,16 +9,15 @@ using namespace std;
 class Line : public GeoElt
 {
 	public:
-		Line(string,Point*,Point*);
+		Line(Point*,Point*);
 		virtual ~Line();
 
 		bool Move(int,int);
-		string Display();
+		string Display(string);
 		string GetName() const;
 
 	protected:
 		list<Point*> ends;
-		string name;
 };
 
 #endif
