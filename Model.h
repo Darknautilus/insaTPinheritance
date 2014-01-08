@@ -3,14 +3,16 @@
 
 #include <map>
 #include <vector>
+#include <fstream>
+
 #include "GeoElt.h"
+
+using std::string;
 
 class Model
 {
-	using namespace std;
-
-	typedef vector<GeoElt*>::iterator itElt;
-	typedef map<string,int>::iterator itIndex;
+	typedef std::vector<GeoElt*>::iterator itElt;
+	typedef std::map<std::string,int>::iterator itIndex;
 	
 	public:
 		Model();
@@ -22,8 +24,8 @@ class Model
 		bool SaveInFile(std::string);
 
 	protected:
-		vector<GeoElt*> elements;
-		map<string,int> eltIndexes;
+		std::vector<GeoElt*> elements;
+		std::map<std::string,int> eltIndexes;
 };
 
 #endif

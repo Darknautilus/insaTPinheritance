@@ -15,6 +15,7 @@ endif
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
+	@mkdir -p $(PATHEXEC)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp

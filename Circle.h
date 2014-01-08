@@ -1,10 +1,14 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
+#include <string>
+#include <iostream>
+#include <sstream>
+
 #include "GeoElt.h"
 #include "Point.h"
-#include <string>
-using namespace std;
+
+using std::string;
 
 class Circle : public GeoElt
 {

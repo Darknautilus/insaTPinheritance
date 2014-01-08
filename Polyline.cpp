@@ -43,7 +43,7 @@ string Polyline::Display(string aName)
   {
 		description << (*it)->getX() << " " << (*it)->getY() << " " ;
 	}
-	description << endl;
+	description << std::endl;
 
 	return description.str();
 }
