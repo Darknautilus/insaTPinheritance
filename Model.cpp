@@ -1,4 +1,5 @@
 #include "Model.h"
+#include <iostream>
 
 Model::Model()
 {
@@ -70,5 +71,17 @@ bool Model::SaveInFile(std::string pFilename)
 		save << elements[index]->Display(it->first);
 	}	
 
+	return true;
+}
+
+bool Model::List()
+{
+	int index;
+	for(itIndex it = eltIndexes.begin();  it!=eltIndexes.end();++it)
+	{
+		index = it->second;
+
+		std::cout << elements[index]->Display(it->first);
+	}
 	return true;
 }

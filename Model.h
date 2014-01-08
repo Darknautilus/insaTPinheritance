@@ -4,7 +4,6 @@
 #include <map>
 #include <vector>
 #include <fstream>
-
 #include "GeoElt.h"
 
 using std::string;
@@ -22,6 +21,7 @@ class Model
 		bool Delete(std::string);
 		bool Move(std::string, Point*);
 		bool SaveInFile(std::string);
+		bool List();
 
 	protected:
 		std::vector<GeoElt*> elements;
