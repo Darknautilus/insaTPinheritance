@@ -30,8 +30,8 @@ bool Model::Delete(std::string pName)
 		if(it->first == pName)
 		{
 			int index = it->second;
-			elements.erase(index);	
-          		eltIndexes.erase(pName);
+			elements.erase(elements.begin()+index);	
+      eltIndexes.erase(it);
 			
 			return true;	
 		}
@@ -53,15 +53,15 @@ bool Model::Move(std::string pName, Point *pDir)
 		}
 	}
 	if(trouve)
-		elements[index].Move(pDir.getX(),pDir.getY());
+		elements[index]->Move(pDir->getX(),pDir->getY());
 	
 	return true;
 }
 
 bool Model::SaveInFile(std::string pFilename)
 {
-	ofstream save;
-	save.open(pFilename, ios::out);
+	std::ofstream save;
+	save.open(pFilename, std::ios::out);
 	for (itElt it = elements.begin() ; it!=elements.end() ; ++it)
 	{
 		(*it)->Display();

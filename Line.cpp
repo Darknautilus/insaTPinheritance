@@ -28,7 +28,7 @@ bool Line::Move(int pX, int pY)
 string Line::Display()
 {
         ostringstream description;
-        description << "L " << this.name<<" " ;
+        description << "L " << this->name<<" " ;
 	for(std::list<Point*>::iterator it = ends.begin();
                         it != ends.end();
                         ++it)
