@@ -1,0 +1,40 @@
+OK
+#New object: circle1
+OK
+#New object: circle2
+ERR
+#invalid parameters
+OK
+#New object: rectangle1
+OK
+#New object: line1
+ERR
+#invalid parameters
+ERR
+#invalid parameters
+OK
+#New object: polyline1
+ERR
+#invalid parameters
+OK
+#New object: polyline3
+OK
+#New object: agregat1
+ERR
+#invalid parameters
+OK
+#New object: agregat3
+OK
+#New object: agregat4
+OK
+#New object: agregat5
+ERR
+#invalid parameters 
+ERR
+#invalid parameters
+ERR
+#invalid parameters
+ERR
+#invalid parameters
+ERR
+#invalid parameters

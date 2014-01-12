@@ -5,7 +5,6 @@
 #include <map>
 #include <vector>
 #include <fstream>
-
 #include "GeoElt.h"
 
 using std::string;

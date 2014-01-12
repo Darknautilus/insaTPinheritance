@@ -1,0 +1,20 @@
+C circle1 12 15 45
+C circle2 10 20 80
+C circle3 20
+R rectangle1 56 46 108 4536
+L line1 56 46 108 4536
+L line2
+L 78 50 45 50
+PL polyline1 56 46 108 4536 80 100
+PL polyline2 70 45 -40 60 77 97 55
+PL polyline3 70 45 -40 60 77 97 88 87
+AO agregat1 circle1 line1 polyline3
+AO agregat2 circle2 rectangle1 polyline2 polyline3
+AO agregat3 rectangle1
+AO agregat4 polyline1 line1 agregat1
+AO agregat5 agregat4 agregat1 
+AO agregat6 jexistePasDuTout
+C circle1 80 45 99
+AO circle2 line1 polyline3
+R line1 10 15 30 35
+PL polyline4 14 18 
