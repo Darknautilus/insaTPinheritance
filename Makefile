@@ -5,7 +5,7 @@ LDFLAGS=
 PATHEXEC=bin/
 EXEC=inherit
 TARGET=$(addprefix $(PATHEXEC), $(EXEC))
-SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp Controller.cpp
+SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
 OBJ=$(SRC:.cpp=.o)
 
 ifeq ($(MODE),DEBUG)
@@ -44,6 +44,10 @@ DeleteCommand.o: DeleteCommand.h Command.h
 MoveCommand.o: MoveCommand.h Command.h
 
 Controller.o: Controller.h Command.h
+
+Interpreter.o: Interpreter.h
+
+Executor.o: Executor.h Controller.h
 
 #test: $(EXEC)
 #	@make -C Tests

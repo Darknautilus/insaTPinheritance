@@ -17,6 +17,7 @@ class Controller
 		bool SaveInFile(std::string);
 		bool Undo();
 		bool Redo();
+		void List();
 
 	protected:
 		std::list<Command*> actions;

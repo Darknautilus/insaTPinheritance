@@ -1,6 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include <iostream>
 #include <map>
 #include <vector>
 #include <fstream>
@@ -22,6 +23,7 @@ class Model
 		bool Delete(std::string);
 		bool Move(std::string, Point*);
 		bool SaveInFile(std::string);
+		void List();
 
 	protected:
 		std::vector<GeoElt*> elements;

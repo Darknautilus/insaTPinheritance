@@ -72,3 +72,11 @@ bool Model::SaveInFile(std::string pFilename)
 
 	return true;
 }
+
+void Model::List()
+{
+	for(itIndex it = eltIndexes.begin(); it != eltIndexes.end(); ++it)
+	{
+		std::cout << elements.at(it->second)->Display(it->first) << std::endl;
+	}
+}
