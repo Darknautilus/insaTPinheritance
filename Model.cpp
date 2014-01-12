@@ -7,8 +7,10 @@ Model::Model()
 
 Model::~Model()
 {
-	elements.erase(elements.begin(), elements.end());
-	eltIndexes.erase(eltIndexes.begin(),eltIndexes.end());
+	for(itElt it = elements.begin(); it != elements.end(); ++it)
+	{
+		delete *it;
+	}
 }
 
 bool Model::Add(GeoElt *pElt, std::string pName)
@@ -80,4 +82,14 @@ void Model::List()
 	{
 		std::cout << elements.at(it->second)->Display(it->first) << std::endl;
 	}
+}
+
+void Model::Clear()
+{
+	for(itElt it = elements.begin(); it != elements.end(); ++it)
+	{
+		delete *it;
+	}
+	elements.clear();
+	eltIndexes.clear();
 }

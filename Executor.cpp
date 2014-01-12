@@ -6,7 +6,7 @@ Executor::Executor(Interpreter *pInterpreter) : interpreter(pInterpreter)
 Executor::~Executor()
 {}
 
-void Executor::Execute(CommandFeedback *feedback)
+bool Executor::Execute(CommandFeedback *feedback)
 {
 	if(feedback->Status == CommandStatus::OK)
 	{
@@ -18,4 +18,5 @@ void Executor::Execute(CommandFeedback *feedback)
 	{
 		printStatus(feedback->Status);
 	}
+	return true;
 }

@@ -10,7 +10,7 @@ class Executor
 		Executor(Interpreter*);
 		virtual ~Executor();
 
-		void Execute(CommandFeedback*);
+		bool Execute(CommandFeedback*);
 
 	private:
 		Interpreter *interpreter;

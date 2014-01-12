@@ -53,7 +53,7 @@ bool Controller::Move(std::string pName, Point *pDirection)
 
 bool Controller::SaveInFile(std::string pFilename)
 {
-
+	return model.SaveInFile(pFilename);
 }
 
 bool Controller::Undo()
@@ -81,4 +81,22 @@ bool Controller::Redo()
 		--currAction;
 		return (*currAction)->Do();
 	}
+}
+
+void Controller::List()
+{
+	model.List();
+}
+
+void Controller::Clear()
+{
+	for(std::list<Command*>::iterator it = actions.begin();
+			it != actions.end();
+			++it)
+	{
+		delete *it;
+	}
+	actions.clear();
+	currAction = actions.rbegin();
+	model.Clear();
 }

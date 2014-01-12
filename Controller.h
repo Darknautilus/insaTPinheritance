@@ -18,6 +18,7 @@ class Controller
 		bool Undo();
 		bool Redo();
 		void List();
+		void Clear();
 
 	protected:
 		std::list<Command*> actions;

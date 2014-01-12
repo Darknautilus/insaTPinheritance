@@ -23,6 +23,7 @@ class Model
 		bool Move(std::string, Point*);
 		bool SaveInFile(std::string);
 		void List();
+		void Clear();
 
 	protected:
 		std::vector<GeoElt*> elements;
