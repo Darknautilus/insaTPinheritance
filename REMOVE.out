@@ -1,0 +1,31 @@
+OK
+#New object: rectangle1
+OK
+#New object: l172v
+OK
+#New object: circle1
+OK
+#New object: agg1
+OK
+#New object: agg2
+rectangle1
+l172v
+circle1
+agg1
+agg2
+OK
+#Delete object: rectangle1
+l172v
+circle1
+agg1
+agg2
+OK
+#Delete object: agg1
+l172v
+circle1
+agg2
+ERR
+#Invalid parameters
+l172v
+circle1
+agg2

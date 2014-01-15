@@ -1,0 +1,46 @@
+C circle1
+C circle2
+C circle3
+LIST 
+UNDO
+LIST
+UNDO
+LIST 
+REDO 
+LIST 
+REDO
+C circle4
+L line1
+L line2
+L line3
+L line4
+R rectangle1
+R rectangle2
+R rectangle3
+
+DELETE line1 line2 line3 
+LIST
+UNDO
+LIST
+R rectangle4
+REDO
+LIST
+UNDO
+UNDO
+LIST
+
+PL polyline1
+PL polyline2
+PL polyline3
+PL polyline4
+PL polyline5
+L line1
+L line2
+L line3
+LIST
+CLEAR
+LIST
+UNDO
+LIST
+C circle5
+#LA JE DOIS FAIRE LE UNDO POUR 21 ELEMENT AFFICHER L'ERREUR POUR LE 21EME ET FAIRE UN LIST ET VERIFIER QU'ON EST BIEN A LA 20EME EXECUTION PUIS IDEM POUR UN REDO
