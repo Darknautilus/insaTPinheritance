@@ -9,6 +9,7 @@
 
 #include <list>
 #include <string>
+#include <sstream>
 
 #include "Point.h"
 

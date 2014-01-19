@@ -6,10 +6,6 @@
 
 #include "Interpreter.h"
 
-#include <algorithm>
-#include <sstream>
-#include <iterator>
-
 Interpreter::Interpreter()
 {
 	commandName[std::string("C")] = CommandCode::CIRCLE;
@@ -84,6 +80,7 @@ CommandFeedback* Interpreter::Read(std::string pLine)
 
 CommandCode Interpreter::getCodeFromStr(std::string pKey)
 {
+	std::transform(pKey.begin(),pKey.end(),pKey.begin(),::toupper);
 	std::map<std::string,CommandCode>::iterator it = commandName.find(pKey);
 	if(it == commandName.end())
 	{

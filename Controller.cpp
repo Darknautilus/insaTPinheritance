@@ -14,6 +14,8 @@ Controller::Controller()
 
 Controller::~Controller()
 {
+	if(DEBUG)
+		std::cout << "Controller destroyed" << std::endl;
 	for(std::list<Command*>::iterator it = actions.begin();
 			it != actions.end();
 			++it)
@@ -24,7 +26,7 @@ Controller::~Controller()
 
 bool Controller::Add(std::string pName, GeoElt *pElement, FileCommand *pFCommand)
 {
-	std::vector<string> names;
+	std::vector<std::string> names;
 	names.push_back(pName);
 	std::vector<GeoElt*> elements;
 	elements.push_back(pElement);
@@ -88,7 +90,7 @@ bool Controller::Delete(std::vector<std::string> pNames, FileCommand *pFCommand)
 
 bool Controller::Move(std::string pName, Point *pDirection, FileCommand *pFCommand)
 {
-	std::vector<string> names;
+	std::vector<std::string> names;
 	names.push_back(pName);
 	MoveCommand *command = new MoveCommand(&model, names, pDirection);
 	if(pFCommand == 0)
@@ -123,7 +125,7 @@ bool Controller::LoadFromFile(std::string pFilename, Interpreter *pInterpreter, 
 	FileCommand *command;
 	CommandFeedback *feedback;
 	std::ifstream inputFile(pFilename);
-	string line;
+	std::string line;
 	if(inputFile.good())
 	{
 		command = new FileCommand(&model);
@@ -195,9 +197,10 @@ bool Controller::Redo()
 	}
 	else
 	{
+		--currAction;
 		bool ret = (*currAction)->Do();
-		if(ret)
-			--currAction;
+		if(!ret)
+			++currAction;
 		return ret;
 	}
 }

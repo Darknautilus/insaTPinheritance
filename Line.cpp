@@ -5,9 +5,6 @@
 // =====
 
 #include "Line.h"
-#include <iostream>
-#include <sstream>
-using namespace std;
 
 Line::Line(Point* pFirst, Point* pSecond)
 {
@@ -17,30 +14,38 @@ Line::Line(Point* pFirst, Point* pSecond)
 
 Line::~Line()
 {
+	for(std::list<Point*>::iterator it = ends.begin();
+			it != ends.end();
+			++it)
+	{
+		delete *it;
+	}
 }
 
 bool Line::Move(int pX, int pY)
 {
 	bool moved = true;
 	for(std::list<Point*>::iterator it = ends.begin();
-			moved && it != ends.end();
+			it != ends.end();
 			++it)
 	{
 		moved = (*it)->Move(pX,pY);
+		if(!moved)
+			break;
 	}
 	return moved;
 }
 
-string Line::Display(string aName)
+std::string Line::Display(std::string aName)
 {
-	ostringstream description;
+	std::ostringstream description;
   description << "L " << aName<<" " ;
 	for(std::list<Point*>::iterator it = ends.begin(); it != ends.end(); ++it)
   {
 		description << (*it)->getX() << " " << (*it)->getY() << " " ;
 	}
 	
-	description << endl;
+	description << std::endl;
 	return description.str();
 }
 

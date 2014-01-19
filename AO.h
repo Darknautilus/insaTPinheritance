@@ -7,10 +7,9 @@
 #ifndef AO_H
 #define AO_H
 
-#include "GeoElt.h"
-#include <string>
 #include <map>
-using namespace std;
+
+#include "GeoElt.h"
 
 class AO : public GeoElt
 {
@@ -18,12 +17,12 @@ class AO : public GeoElt
 		AO();
 		virtual ~AO();
 
-		bool Add(string, GeoElt*);
+		bool Add(std::string, GeoElt*);
 		bool Move(int,int);
-		string Display(string);
+		std::string Display(std::string);
 
 	protected:
-		std::map<string,GeoElt*> elements;
+		std::map<std::string,GeoElt*> elements;
 };
 
 #endif

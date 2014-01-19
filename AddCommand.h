@@ -17,7 +17,9 @@ class AddCommand : public Command
 
 		bool Do();
 		bool Undo();
-
+	
+	protected:
+		bool done;
 };
 
 #endif

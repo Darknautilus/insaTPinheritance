@@ -12,6 +12,9 @@
 #include <list>
 #include <deque>
 #include <map>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
 
 enum CommandCode
 {
@@ -90,7 +93,5 @@ class Interpreter
 		std::map<CommandCode,CommandInfo*> commandInfos;
 		
 };
-
-
 
 #endif

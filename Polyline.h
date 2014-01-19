@@ -8,9 +8,6 @@
 #define POLYLINE_H
 
 #include "GeoElt.h"
-#include "Point.h"
-#include <string>
-using namespace std;
 
 class Polyline : public GeoElt
 {
@@ -20,11 +17,10 @@ class Polyline : public GeoElt
 
 		bool Add(Point*);
 		bool Move(int,int);
-		string Display(string);
-		string GetName() const;
+		std::string Display(std::string);
 		
 	protected:
-		list<Point*> points;
+		std::list<Point*> points;
 };
 
 #endif

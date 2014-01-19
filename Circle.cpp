@@ -19,7 +19,7 @@ bool Circle::Move(int pX, int pY)
 	return center.Move(pX, pY);
 }
 
-string Circle::Display(string aName)
+std::string Circle::Display(std::string aName)
 {
 	std::ostringstream description;
 	description << "C " << aName <<" " << center.getX() << " " << center.getY() << " " << radius << std::endl;

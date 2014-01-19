@@ -5,7 +5,6 @@
 // =====
 
 #include "Model.h"
-#include <iostream>
 
 Model::Model()
 {
@@ -13,25 +12,26 @@ Model::Model()
 
 Model::~Model()
 {
-	for(itElt it = elements.begin(); it != elements.end(); ++it)
+	for(eltIt it = elements.begin(); it != elements.end(); ++it)
 	{
-		delete *it;
+		delete it->second.element;
 	}
 }
 
 bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 {
-	itIndex it = eltIndexes.find(pName);
-	if(it == eltIndexes.end() && pHard)
+	eltIt it = elements.find(pName);
+	if(it == elements.end() && pHard)
 	{
-		elements.push_back(pElt);
-		deleted.push_back(false);
-		eltIndexes.insert(make_pair(pName,elements.size()-1));		
+		ElementMarker em;
+		em.element = pElt;
+		em.deleted = false;
+		elements.insert(make_pair(pName,em));		
 		return true;
 	}
-	else if(deleted.at(it->second) && !pHard)
+	else if(it->second.deleted && !pHard)
 	{
-		deleted.at(it->second) = false;
+		it->second.deleted = false;
 		return true;
 	}
 	else
@@ -42,37 +42,38 @@ bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 
 GeoElt* Model::Delete(std::string pName, bool pHard)
 {
+	if(DEBUG)
+		std::cout << "Deleting "+pName << std::endl;
 	GeoElt *element = 0;
-	itIndex it = eltIndexes.find(pName);
-	if(it != eltIndexes.end())
+	eltIt it = elements.find(pName);
+	if(it != elements.end())
 	{
-		int index = it->second;
-		if(pHard || !deleted.at(index))
+		if(pHard || !it->second.deleted)
 		{
-			element = elements.at(index);
+			element = it->second.element;
 			if(pHard)
 			{
-				elements.erase(elements.begin()+index);
-				deleted.erase(deleted.begin()+index);
-				eltIndexes.erase(it);
+				elements.erase(it);
 			}
 			else
 			{
-				deleted.at(index) = true;
+				it->second.deleted = true;
 			}
 		}
 	}
+	if(DEBUG)
+		std::cout << pName+" deleted" << std::endl;
 	return element;
 }
 
 GeoElt* Model::Move(std::string pName, Point *pDir)
 {
 	GeoElt *element = 0;
-	itIndex it = eltIndexes.find(pName);
-	if(it != eltIndexes.end() && !deleted.at(it->second))
+	eltIt it = elements.find(pName);
+	if(it != elements.end() && !it->second.deleted)
 	{
-		if(elements.at(it->second)->Move(pDir->getX(),pDir->getY()))
-			element = elements.at(it->second);
+		if(it->second.element->Move(pDir->getX(),pDir->getY()))
+			element = it->second.element;
 	}
 	return element;
 }
@@ -83,10 +84,10 @@ bool Model::SaveInFile(std::string pFilename)
 	std::ofstream save(pFilename);
 	if(save.good())
 	{
-		for(itIndex it = eltIndexes.begin();  it!=eltIndexes.end();++it)
+		for(eltIt it = elements.begin();  it != elements.end();++it)
 		{
-			if(!deleted.at(it->second))
-				save << elements.at(it->second)->Display(it->first);
+			if(!it->second.deleted)
+				save << it->second.element->Display(it->first);
 		}
 		return true;
 	}
@@ -98,20 +99,18 @@ bool Model::SaveInFile(std::string pFilename)
 
 void Model::List()
 {
-	for(itIndex it = eltIndexes.begin(); it != eltIndexes.end(); ++it)
+	for(eltIt it = elements.begin(); it != elements.end(); ++it)
 	{
-		if(!deleted.at(it->second))
-			std::cout << elements.at(it->second)->Display(it->first) << std::endl;
+		if(!it->second.deleted)
+			std::cout << it->second.element->Display(it->first);
 	}
 }
 
 void Model::Clear()
 {
-	for(itElt it = elements.begin(); it != elements.end(); ++it)
+	for(eltIt it = elements.begin(); it != elements.end(); ++it)
 	{
-		delete *it;
+		delete it->second.element;
 	}
 	elements.clear();
-	deleted.clear();
-	eltIndexes.clear();
 }

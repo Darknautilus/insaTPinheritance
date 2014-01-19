@@ -7,8 +7,6 @@
 #include "Controller.h"
 #include "Executor.h"
 
-#include <stdexcept>
-
 Executor::Executor(Interpreter *pInterpreter) : interpreter(pInterpreter)
 {
 	controller = new Controller();
@@ -16,6 +14,8 @@ Executor::Executor(Interpreter *pInterpreter) : interpreter(pInterpreter)
 
 Executor::~Executor()
 {
+	if(DEBUG)
+		std::cout << "Executor destroyed" << std::endl;
 	delete controller;
 }
 
@@ -60,7 +60,7 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 			if(pFCommand == 0 && std::ifstream(feedback->Args.front()).good())
 			{
 				std::cout << "Fichier exitant, écraser ? (o/N)";
-				string input;
+				std::string input;
 				std::getline(std::cin,input);
 				if(input.compare("o") == 0)
 				{
@@ -151,26 +151,86 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 		{
 			// ADD command
 			GeoElt *element;
-			switch(feedback->Code)
+			
+			int argsNb = feedback->Args.size();
+			// Cas ou la commande est valide :
+			// 	Il y a au moins 2 arguments (nom + autre)
+			// 		ET
+			// 		C'est une polyligne et il y a un nombre impair d'arguments
+			// 			OU
+			// 		C'est un autre objet
+			//
+			if(	argsNb >= 2
+						&&
+					(
+						(feedback->Code == CommandCode::POLYLINE && argsNb % 2 == 1)
+							||
+						feedback->Code != CommandCode::POLYLINE
+					)
+				)
 			{
-				case CommandCode::CIRCLE:
-
-					break;
-				case CommandCode::RECTANGLE:
-					break;
-				case CommandCode::LINE:
-					break;
-				case CommandCode::POLYLINE:
-					break;
-				case CommandCode::AO:
-					break;
-				default:
-					break;
+				std::vector<int> intArgs;
+				bool parsageError = false;
+				// Si ce n'est pas un Objet Agrégé, les paramètres sont des int, et on les extrait
+				if(feedback->Code != CommandCode::AO)
+				{
+					for(int i = 1; i < argsNb; i++)
+					{
+						try
+						{
+							intArgs.push_back(std::stoi(feedback->Args.at(i)));
+						}
+						catch(std::invalid_argument ia)
+						{
+							parsageError = true;
+						}
+						catch(std::out_of_range oor)
+						{
+							parsageError = true;
+						}
+						if(parsageError)
+							break;
+					}
+				}
+				if(parsageError)
+				{
+					std::cout << "bad values" << std::endl;
+				}
+				else
+				{
+					switch(feedback->Code)
+					{
+						case CommandCode::CIRCLE:
+							element = new Circle(intArgs.at(0),intArgs.at(1),intArgs.at(2));
+							break;
+						case CommandCode::RECTANGLE:
+							element = new Rectangle(new Point(intArgs.at(0),intArgs.at(1)), new Point(intArgs.at(2), intArgs.at(3)));
+							break;
+						case CommandCode::LINE:
+							element = new Line(new Point(intArgs.at(0),intArgs.at(1)), new Point(intArgs.at(2),intArgs.at(3)));
+							break;
+						case CommandCode::POLYLINE:
+							element = new Polyline();
+							for(int i = 0; i < intArgs.size(); i+=2)
+							{
+								((Polyline*)element)->Add(new Point(intArgs.at(i),intArgs.at(i+1)));
+							}
+							break;
+						case CommandCode::AO:
+							break;
+						default:
+							break;
+					}
+					bool added = controller->Add(feedback->Args.at(0),element,pFCommand);
+					if(pFCommand == 0 && added)
+					{
+						printStatus(feedback->Status);
+					}
+				}
 			}
-			// Add element
-			if(pFCommand == 0)
+			else
 			{
-				printStatus(feedback->Status);
+				printStatus(CommandStatus::BAD_PARAM_NB);
 			}
 		}
 	}

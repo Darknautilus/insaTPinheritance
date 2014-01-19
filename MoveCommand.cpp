@@ -12,6 +12,8 @@ MoveCommand::MoveCommand(Model *pModel, std::vector<std::string>& pNames, Point 
 
 MoveCommand::~MoveCommand()
 {
+	if(DEBUG)
+		std::cout << "\tMoveCommand destroyed" << std::endl;
 }
 
 bool MoveCommand::Do()

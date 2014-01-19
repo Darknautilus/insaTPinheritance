@@ -7,9 +7,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include "Polyline.h"
-#include <string>
-using namespace std;
+#include "GeoElt.h"
 
 class Rectangle : public GeoElt
 {
@@ -18,8 +16,7 @@ class Rectangle : public GeoElt
 		virtual ~Rectangle();
 
 		bool Move(int,int);
-		string Display(string);
-		string GetName() const;
+		std::string Display(std::string);
 
 	protected:
 		Point* PtSupG;

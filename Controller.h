@@ -9,10 +9,13 @@
 
 #include <fstream>
 
+#include "Config.h"
+
 #include "AddCommand.h"
 #include "DeleteCommand.h"
 #include "MoveCommand.h"
 #include "FileCommand.h"
+
 #include "Interpreter.h"
 
 class Executor;

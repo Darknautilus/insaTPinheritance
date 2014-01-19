@@ -51,11 +51,11 @@ MoveCommand.o: MoveCommand.h Command.h
 
 FileCommand.o: FileCommand.h Command.h
 
-Controller.o: Controller.h Command.h
+Controller.o: Controller.h Config.h Command.h
 
 Interpreter.o: Interpreter.h
 
-Executor.o: Executor.h Controller.h
+Executor.o: Executor.h Config.h Controller.h
 
 #test: $(EXEC)
 #	@make -C Tests

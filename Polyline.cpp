@@ -5,9 +5,6 @@
 // =====
 
 #include "Polyline.h"
-#include <sstream>
-#include <iostream>
-using namespace std;
 
 Polyline::Polyline()
 {
@@ -33,17 +30,19 @@ bool Polyline::Move(int pX, int pY)
 {
 	bool moved = true;
 	for(std::list<Point*>::iterator it = points.begin();
-			moved && it != points.end();
+			it != points.end();
 			++ it)
 	{
 		moved = (*it)->Move(pX,pY);
+		if(!moved)
+			break;
 	}
 	return moved;
 }
 
-string Polyline::Display(string aName)
+std::string Polyline::Display(std::string aName)
 {
-	ostringstream description;
+	std::ostringstream description;
 	description << "PL " << aName << " " ;
   for(std::list<Point*>::iterator it = points.begin(); it != points.end(); ++ it)
   {

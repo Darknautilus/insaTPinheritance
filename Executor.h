@@ -7,12 +7,20 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 
-#include <fstream>
+#include <stdexcept>
 
-#include "Interpreter.h"
-#include "FileCommand.h"
+#include "Config.h"
+
+#include "AO.h"
+#include "Circle.h"
+#include "Rectangle.h"
+#include "Line.h"
+#include "Polyline.h"
 
 class Controller;
+class Interpreter;
+class CommandFeedback;
+class FileCommand;
 
 class Executor
 {

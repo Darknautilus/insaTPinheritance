@@ -8,17 +8,20 @@
 #define MODEL_H
 
 #include <iostream>
-#include <map>
-#include <deque>
 #include <fstream>
-#include "GeoElt.h"
+#include <deque>
 
-using std::string;
+#include "Executor.h"
+
+struct ElementMarker
+{
+	GeoElt* element;
+	bool deleted;
+};
 
 class Model
 {
-	typedef std::deque<GeoElt*>::iterator itElt;
-	typedef std::map<std::string,int>::iterator itIndex;
+	typedef std::map<std::string,ElementMarker>::iterator eltIt;
 	
 	public:
 		Model();
@@ -32,9 +35,9 @@ class Model
 		void Clear();
 
 	protected:
-		std::deque<GeoElt*> elements;
-		std::deque<bool> deleted;
-		std::map<std::string,int> eltIndexes;
+		std::map<std::string,ElementMarker> elements;
+	
+	friend bool Executor::Execute(CommandFeedback*,FileCommand*);
 };
 
 #endif

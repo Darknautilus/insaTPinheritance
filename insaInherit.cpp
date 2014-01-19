@@ -18,7 +18,7 @@ int main(int argc, const char **argv)
 	bool again = true;
 	while(again)
 	{
-		std::cout << ">>" << std::flush;
+		std::cout << ">> " << std::flush;
 		std::getline(std::cin,input);
 		if(!input.empty())
 		{
