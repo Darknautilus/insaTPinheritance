@@ -226,6 +226,7 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 							}
 							break;
 						case CommandCode::AO:
+							element = new AO();
 							break;
 						default:
 							break;

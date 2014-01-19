@@ -37,7 +37,7 @@ Line.o: Line.h GeoElt.h Point.h
 
 Polyline.o: Polyline.h GeoElt.h Point.h
 
-Rectangle.o: Rectangle.h GeoElt.h Polyline.h
+Rectangle.o: Rectangle.h GeoElt.h
 
 AO.o: AO.h GeoElt.h
 
@@ -51,18 +51,18 @@ MoveCommand.o: MoveCommand.h Command.h
 
 FileCommand.o: FileCommand.h Command.h
 
-Controller.o: Controller.h Config.h Command.h
+Controller.o: Controller.h Config.h Model.h Command.h
 
 Interpreter.o: Interpreter.h
 
-Executor.o: Executor.h Config.h Controller.h
+Executor.o: Executor.h Config.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h AO.h
 
-#test: $(EXEC)
-#	@make -C Tests
+test: $(TARGET)
+	@make -C tests
 
 clean:
 	@rm -rf *.o
-#	@make clean -C Tests
+	@make clean -C tests
 
 mrproper: clean
 	@rm -rf $(PATHEXEC)
