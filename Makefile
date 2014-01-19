@@ -65,4 +65,4 @@ clean:
 #	@make clean -C Tests
 
 mrproper: clean
-	@rm -rf $(EXEC)
+	@rm -rf $(PATHEXEC)
