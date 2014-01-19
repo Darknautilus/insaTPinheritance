@@ -1,3 +1,9 @@
+# =====
+# INSA Lyon, Département Informatique
+# TP C++ 3IF :  Héritage et polymorphisme
+# Auteur : B3229
+# =====
+
 MODE=DEBUG
 CC=g++
 CFLAGS=-std=c++0x
@@ -5,7 +11,7 @@ LDFLAGS=
 PATHEXEC=bin/
 EXEC=inherit
 TARGET=$(addprefix $(PATHEXEC), $(EXEC))
-SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
+SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp FileCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
 OBJ=$(SRC:.cpp=.o)
 
 ifeq ($(MODE),DEBUG)
@@ -21,7 +27,7 @@ $(TARGET): $(OBJ)
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-Model.o: GeoElt.h
+Model.o: Model.h GeoElt.h
 
 Point.o: Point.h
 
@@ -42,6 +48,8 @@ AddCommand.o: AddCommand.h Command.h
 DeleteCommand.o: DeleteCommand.h Command.h
 
 MoveCommand.o: MoveCommand.h Command.h
+
+FileCommand.o: FileCommand.h Command.h
 
 Controller.o: Controller.h Command.h
 

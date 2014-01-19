@@ -1,3 +1,9 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #ifndef MOVECOMMAND_H
 #define MOVECOMMAND_H
 
@@ -6,7 +12,7 @@
 class MoveCommand : public Command
 {
 	public:
-		MoveCommand(Model*,std::string,Point*);
+		MoveCommand(Model*,std::vector<std::string>&,Point*);
 		virtual ~MoveCommand();
 
 		bool Do();

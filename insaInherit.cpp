@@ -1,7 +1,13 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #include <iostream>
 
-#include "Interpreter.h"
 #include "Executor.h"
+#include "Interpreter.h"
 
 int main(int argc, const char **argv)
 {
@@ -9,14 +15,15 @@ int main(int argc, const char **argv)
 	Interpreter inter;
 	Executor executor(&inter);
 	CommandFeedback *feedback;
-	while(true)
+	bool again = true;
+	while(again)
 	{
 		std::cout << ">>" << std::flush;
 		std::getline(std::cin,input);
 		if(!input.empty())
 		{
 			feedback = inter.Read(input);
-			executor.Execute(feedback);
+			again = executor.Execute(feedback);
 			delete feedback;
 		}
 	}

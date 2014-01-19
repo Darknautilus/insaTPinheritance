@@ -1,3 +1,9 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #include "Rectangle.h"
 #include <sstream>
 #include <iostream>

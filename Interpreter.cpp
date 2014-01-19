@@ -1,3 +1,9 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #include "Interpreter.h"
 
 #include <algorithm>
@@ -53,7 +59,7 @@ CommandFeedback* Interpreter::Read(std::string pLine)
 	CommandFeedback *feedback = new CommandFeedback();
 	std::copy(std::istream_iterator<std::string>(iss),
 							std::istream_iterator<std::string>(),
-							std::back_inserter<std::list<std::string>>(feedback->Args));
+							std::back_inserter<std::deque<std::string>>(feedback->Args));
 	
 	feedback->Code = getCodeFromStr(feedback->Args.front());
 	if(feedback->Code == CommandCode::NULLC)

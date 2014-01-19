@@ -1,9 +1,21 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
+
+#include <fstream>
 
 #include "AddCommand.h"
 #include "DeleteCommand.h"
 #include "MoveCommand.h"
+#include "FileCommand.h"
+#include "Interpreter.h"
+
+class Executor;
 
 class Controller
 {
@@ -11,9 +23,10 @@ class Controller
 		Controller();
 		virtual ~Controller();
 
-		bool Add(std::string,GeoElt*);
-		bool Delete(std::string);
-		bool Move(std::string,Point*);
+		bool Add(std::string,GeoElt*,FileCommand* = 0);
+		bool Delete(std::vector<std::string>,FileCommand* = 0);
+		bool Move(std::string,Point*,FileCommand* = 0);
+		bool LoadFromFile(std::string, Interpreter*, Executor*);
 		bool SaveInFile(std::string);
 		bool Undo();
 		bool Redo();

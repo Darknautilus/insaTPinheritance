@@ -1,9 +1,16 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #ifndef INTERPRETER_H
 #define INTERPRETER_H
 
 #include <iostream>
 #include <string>
 #include <list>
+#include <deque>
 #include <map>
 
 enum CommandCode
@@ -64,7 +71,7 @@ struct CommandInfo
 struct CommandFeedback
 {
 	CommandCode Code;
-	std::list<std::string> Args;
+	std::deque<std::string> Args;
 	CommandStatus Status;
 };
 

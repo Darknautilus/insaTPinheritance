@@ -1,3 +1,10 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
+#include "Executor.h"
 #include "Controller.h"
 
 Controller::Controller()
@@ -15,40 +22,120 @@ Controller::~Controller()
 	}
 }
 
-bool Controller::Add(std::string pName, GeoElt *pElement)
+bool Controller::Add(std::string pName, GeoElt *pElement, FileCommand *pFCommand)
 {
-	if(currAction != actions.rbegin())
+	std::vector<string> names;
+	names.push_back(pName);
+	std::vector<GeoElt*> elements;
+	elements.push_back(pElement);
+	AddCommand *command = new AddCommand(&model, names, elements);
+	if(pFCommand == 0)
 	{
-		--currAction;
-		actions.erase(--(currAction.base()),actions.end());
+		if(currAction != actions.rbegin())
+		{
+			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+					it != currAction;
+					++it)
+			{
+				delete *it;
+			}
+			--currAction;
+			actions.erase(--(currAction.base()),actions.end());
+		}
+		actions.push_back(command);
+		currAction = actions.rbegin();
+		return (*currAction)->Do();
 	}
-	actions.push_back(new AddCommand(&model, pName, pElement));
-	currAction = actions.rbegin();
-	return (*currAction)->Do();
+	else
+	{
+		return pFCommand->Add(command);
+	}
 }
 
-bool Controller::Delete(std::string pName)
+bool Controller::Delete(std::vector<std::string> pNames, FileCommand *pFCommand)
 {
-	if(currAction != actions.rbegin())
+	DeleteCommand *command = new DeleteCommand(&model, pNames);
+	if(pFCommand == 0)
 	{
-		--currAction;
-		actions.erase(--(currAction.base()),actions.end());
+		if(currAction != actions.rbegin())
+		{
+			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+					it != currAction;
+					++it)
+			{
+				delete *it;
+			}
+			--currAction;
+			actions.erase(--(currAction.base()),actions.end());
+		}
+		actions.push_back(command);
+		currAction = actions.rbegin();
+		return (*currAction)->Do();
 	}
-	actions.push_back(new DeleteCommand(&model, pName));
-	currAction = actions.rbegin();
-	return (*currAction)->Do();
+	else
+	{
+		return pFCommand->Add(command);
+	}
 }
 
-bool Controller::Move(std::string pName, Point *pDirection)
+bool Controller::Move(std::string pName, Point *pDirection, FileCommand *pFCommand)
 {
-	if(currAction != actions.rbegin())
+	std::vector<string> names;
+	names.push_back(pName);
+	MoveCommand *command = new MoveCommand(&model, names, pDirection);
+	if(pFCommand == 0)
 	{
-		--currAction;
-		actions.erase(--(currAction.base()),actions.end());
+		if(currAction != actions.rbegin())
+		{
+			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+					it != currAction;
+					++it)
+			{
+				delete *it;
+			}
+			--currAction;
+			actions.erase(--(currAction.base()),actions.end());
+		}
+		actions.push_back(command);
+		currAction = actions.rbegin();
+		return (*currAction)->Do();
 	}
-	actions.push_back(new MoveCommand(&model, pName, pDirection));
-	currAction = actions.rbegin();
-	return (*currAction)->Do();
+	else
+	{
+		return pFCommand->Add(command);
+	}
+}
+
+bool Controller::LoadFromFile(std::string pFilename, Interpreter *pInterpreter, Executor *pExecutor)
+{
+	FileCommand *command;
+	CommandFeedback *feedback;
+	std::ifstream inputFile(pFilename);
+	string line;
+	if(inputFile.good())
+	{
+		command = new FileCommand(&model);
+		std::getline(inputFile,line);
+		while(!inputFile.eof() && !inputFile.fail())
+		{
+			feedback = pInterpreter->Read(line);
+			pExecutor->Execute(feedback, command);
+			delete feedback;
+			std::getline(inputFile,line);
+		}
+		bool failed = !inputFile.eof();
+		inputFile.close();
+		if(failed)
+		{
+			delete command;
+			return false;
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool Controller::SaveInFile(std::string pFilename)

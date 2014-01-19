@@ -1,6 +1,12 @@
+// =====
+// INSA Lyon, Département Informatique
+// TP C++ 3IF :  Héritage et polymorphisme
+// Auteur : B3229
+// =====
+
 #include "MoveCommand.h"
 
-MoveCommand::MoveCommand(Model *pModel, std::string pName, Point *pDirection) : Command(pModel,pName,NULL), direction(pDirection)
+MoveCommand::MoveCommand(Model *pModel, std::vector<std::string>& pNames, Point *pDirection) : Command(pModel,pNames), direction(pDirection)
 {
 }
 
@@ -10,10 +16,10 @@ MoveCommand::~MoveCommand()
 
 bool MoveCommand::Do()
 {
-	return model->Move(eltName,direction);
+	return model->Move(names.front(),direction) != 0;
 }
 
 bool MoveCommand::Undo()
 {
-	return model->Move(eltName,direction->Inverse());
+	return model->Move(names.front(),direction->Inverse()) != 0;
 }
