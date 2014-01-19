@@ -31,20 +31,24 @@ bool Controller::Add(std::string pName, GeoElt *pElement, FileCommand *pFCommand
 	AddCommand *command = new AddCommand(&model, names, elements);
 	if(pFCommand == 0)
 	{
-		if(currAction != actions.rbegin())
+		bool commandValid = command->Do();
+		if(commandValid)
 		{
-			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
-					it != currAction;
-					++it)
+			if(currAction != actions.rbegin())
 			{
-				delete *it;
+				for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+						it != currAction;
+						++it)
+				{
+					delete *it;
+				}
+				--currAction;
+				actions.erase(--(currAction.base()),actions.end());
 			}
-			--currAction;
-			actions.erase(--(currAction.base()),actions.end());
+			actions.push_back(command);
+			currAction = actions.rbegin();
 		}
-		actions.push_back(command);
-		currAction = actions.rbegin();
-		return (*currAction)->Do();
+		return commandValid;
 	}
 	else
 	{
@@ -57,20 +61,24 @@ bool Controller::Delete(std::vector<std::string> pNames, FileCommand *pFCommand)
 	DeleteCommand *command = new DeleteCommand(&model, pNames);
 	if(pFCommand == 0)
 	{
-		if(currAction != actions.rbegin())
+		bool commandValid = command->Do();
+		if(commandValid)
 		{
-			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
-					it != currAction;
-					++it)
+			if(currAction != actions.rbegin())
 			{
-				delete *it;
+				for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+						it != currAction;
+						++it)
+				{
+					delete *it;
+				}
+				--currAction;
+				actions.erase(--(currAction.base()),actions.end());
 			}
-			--currAction;
-			actions.erase(--(currAction.base()),actions.end());
+			actions.push_back(command);
+			currAction = actions.rbegin();
 		}
-		actions.push_back(command);
-		currAction = actions.rbegin();
-		return (*currAction)->Do();
+		return commandValid;
 	}
 	else
 	{
@@ -85,20 +93,24 @@ bool Controller::Move(std::string pName, Point *pDirection, FileCommand *pFComma
 	MoveCommand *command = new MoveCommand(&model, names, pDirection);
 	if(pFCommand == 0)
 	{
-		if(currAction != actions.rbegin())
+		bool commandValid = command->Do();
+		if(commandValid)
 		{
-			for(std::list<Command*>::reverse_iterator it = actions.rbegin();
-					it != currAction;
-					++it)
+			if(currAction != actions.rbegin())
 			{
-				delete *it;
+				for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+						it != currAction;
+						++it)
+				{
+					delete *it;
+				}
+				--currAction;
+				actions.erase(--(currAction.base()),actions.end());
 			}
-			--currAction;
-			actions.erase(--(currAction.base()),actions.end());
+			actions.push_back(command);
+			currAction = actions.rbegin();
 		}
-		actions.push_back(command);
-		currAction = actions.rbegin();
-		return (*currAction)->Do();
+		return commandValid;
 	}
 	else
 	{
@@ -130,7 +142,24 @@ bool Controller::LoadFromFile(std::string pFilename, Interpreter *pInterpreter, 
 			delete command;
 			return false;
 		}
-		return true;
+		bool commandValid = command->Do();
+		if(commandValid)
+		{
+			if(currAction != actions.rbegin())
+			{
+				for(std::list<Command*>::reverse_iterator it = actions.rbegin();
+						it != currAction;
+						++it)
+				{
+					delete *it;
+				}
+				--currAction;
+				actions.erase(--(currAction.base()),actions.end());
+			}
+			actions.push_back(command);
+			currAction = actions.rbegin();
+		}
+		return commandValid;
 	}
 	else
 	{
@@ -152,7 +181,8 @@ bool Controller::Undo()
 	else
 	{
 		bool ret = (*currAction)->Undo();
-		++currAction;
+		if(ret)
+			++currAction;
 		return ret;
 	}
 }
@@ -165,8 +195,10 @@ bool Controller::Redo()
 	}
 	else
 	{
-		--currAction;
-		return (*currAction)->Do();
+		bool ret = (*currAction)->Do();
+		if(ret)
+			--currAction;
+		return ret;
 	}
 }
 

@@ -147,6 +147,32 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				std::cout << "Vide" << std::endl;
 			}
 		}
+		else
+		{
+			// ADD command
+			GeoElt *element;
+			switch(feedback->Code)
+			{
+				case CommandCode::CIRCLE:
+
+					break;
+				case CommandCode::RECTANGLE:
+					break;
+				case CommandCode::LINE:
+					break;
+				case CommandCode::POLYLINE:
+					break;
+				case CommandCode::AO:
+					break;
+				default:
+					break;
+			}
+			// Add element
+			if(pFCommand == 0)
+			{
+				printStatus(feedback->Status);
+			}
+		}
 	}
 	else
 	{

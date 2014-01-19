@@ -43,26 +43,23 @@ bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 GeoElt* Model::Delete(std::string pName, bool pHard)
 {
 	GeoElt *element = 0;
-	for(itIndex it = eltIndexes.begin();it!=eltIndexes.end();++it) //on cherche l'index de l'eltGeo dans le vecteur  grâce a pName
+	itIndex it = eltIndexes.find(pName);
+	if(it != eltIndexes.end())
 	{
-		if(it->first == pName)
+		int index = it->second;
+		if(pHard || !deleted.at(index))
 		{
-			int index = it->second;
-			if(pHard || !deleted.at(index))
+			element = elements.at(index);
+			if(pHard)
 			{
-				element = elements.at(index);
-				if(pHard)
-				{
-					elements.erase(elements.begin()+index);
-					deleted.erase(deleted.begin()+index);
-					eltIndexes.erase(it);
-				}
-				else
-				{
-					deleted.at(index) = true;
-				}
+				elements.erase(elements.begin()+index);
+				deleted.erase(deleted.begin()+index);
+				eltIndexes.erase(it);
 			}
-			break;
+			else
+			{
+				deleted.at(index) = true;
+			}
 		}
 	}
 	return element;
@@ -71,14 +68,11 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 GeoElt* Model::Move(std::string pName, Point *pDir)
 {
 	GeoElt *element = 0;
-	for(itIndex it = eltIndexes.begin();it!=eltIndexes.end();++it)
+	itIndex it = eltIndexes.find(pName);
+	if(it != eltIndexes.end() && !deleted.at(it->second))
 	{
-		if(it->first == pName && !deleted.at(it->second))
-		{
-			elements.at(it->second)->Move(pDir->getX(),pDir->getY());
+		if(elements.at(it->second)->Move(pDir->getX(),pDir->getY()))
 			element = elements.at(it->second);
-			break;
-		}
 	}
 	return element;
 }
