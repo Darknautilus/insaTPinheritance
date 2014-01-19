@@ -28,7 +28,6 @@ AddCommand::~AddCommand()
 bool AddCommand::Do()
 {
 	bool ret;
-	std::cout << done << std::endl;
 	if(!done)
 	{
 		ret = model->Add(elements[0],names[0],true);

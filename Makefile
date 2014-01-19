@@ -4,7 +4,7 @@
 # Auteur : B3229
 # =====
 
-MODE=DEBUG
+MODE=RELEASE
 CC=g++
 CFLAGS=-std=c++0x
 LDFLAGS=

@@ -57,21 +57,30 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 		}
 		else if(feedback->Code == CommandCode::SAVE)
 		{
-			if(pFCommand == 0 && std::ifstream(feedback->Args.front()).good())
+			if(pFCommand == 0)
 			{
-				std::cout << "Fichier exitant, écraser ? (o/N)";
-				std::string input;
-				std::getline(std::cin,input);
-				if(input.compare("o") == 0)
+				bool write = true;
+				if(std::ifstream(feedback->Args.front()).good())
 				{
-					if(controller->SaveInFile(feedback->Args.front()))
+					std::cout << "Fichier exitant, écraser ? (o/N)";
+					std::string input;
+					std::getline(std::cin,input);
+					if(input.compare("o") != 0)
 					{
-						printStatus(feedback->Status);
+						write = false;
 					}
-					else
-					{
-						std::cout << "Error" << std::endl;
-					}
+				}
+				if(write && controller->SaveInFile(feedback->Args.front()))
+				{
+					printStatus(feedback->Status);
+				}
+				else if(!write)
+				{
+					std::cout << "# save cancelled" << std::endl;
+				}
+				else
+				{
+					std::cout << "Error" << std::endl;
 				}
 			}
 		}
