@@ -1,6 +1,6 @@
-C circle1
-C circle2
-C circle3
+C circle1 12 15 45
+C circle2 20 60 45
+C circle3 10 13 45
 LIST 
 UNDO
 LIST
@@ -9,38 +9,85 @@ LIST
 REDO 
 LIST 
 REDO
-C circle4
-L line1
-L line2
-L line3
-L line4
-R rectangle1
-R rectangle2
-R rectangle3
-
-DELETE line1 line2 line3 
+C circle4 30 -12 30
+L line1 56 46 108 4536
+L line2 58 30 100 455
+L line3 20 25 10 45
+L line4 50 46 106 4540
+R rectangle1 56 46 108 4536
+R rectangle2 58 30 100 455
+R rectangle3 20 25 10 45 
+DELETE line1 line2 line3  
 LIST
 UNDO
 LIST
-R rectangle4
+R rectangle4 50 46 106 4540
 REDO
 LIST
 UNDO
 UNDO
 LIST
-
 PL polyline1
 PL polyline2
 PL polyline3
 PL polyline4
 PL polyline5
-L line1
-L line2
-L line3
+OA agg1 rectangle1 circle1
+OA agg2 rectangle2 circle2
+OA agg3 rectangle1 circle3
+OA agg4 agg1 agg2 agg3
+OA agg5 agg4 polyline1
+DELETE agg5
+OA agg5 agg2 agg1
 LIST
 CLEAR
 LIST
 UNDO
 LIST
-C circle5
-#LA JE DOIS FAIRE LE UNDO POUR 21 ELEMENT AFFICHER L'ERREUR POUR LE 21EME ET FAIRE UN LIST ET VERIFIER QU'ON EST BIEN A LA 20EME EXECUTION PUIS IDEM POUR UN REDO
+C circle5 30 15 40
+UNDO
+UNDO
+UNDO
+UNDO 
+UNDO
+UNDO
+UNDO
+UNDO 
+UNDO
+UNDO
+UNDO
+UNDO 
+UNDO
+UNDO
+UNDO
+UNDO 
+UNDO
+UNDO
+UNDO
+UNDO
+LIST 
+UNDO
+LIST
+REDO
+REDO
+REDO
+REDO
+REDO
+REDO
+REDO
+REDO 
+REDO
+REDO
+REDO
+REDO 
+REDO
+REDO
+REDO
+REDO 
+REDO
+REDO
+REDO
+REDO 
+LIST
+REDO
+LIST
