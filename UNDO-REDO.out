@@ -1,0 +1,226 @@
+OK
+#New object: circle1
+OK
+#New object: circle2
+OK 
+#New object: circle3
+circle1
+circle2
+circle3 
+OK
+circle1
+circle2
+OK
+circle1
+OK
+circle1
+circle2 
+OK
+OK
+#New object: circle4
+OK
+#New object: line1
+OK
+#New object: line2
+OK
+#New object: line3
+OK
+#New object: line4
+OK
+#New object: rectangle1
+OK
+#New object: rectangle2
+OK
+#New object: rectangle3
+OK 
+circle1
+circle2
+cirlce3
+circle4
+line4
+rectangle1
+rectangle2
+rectangle3
+OK
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+rectangle3 
+OK
+#New object: rectangle4
+ERR
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+rectangle3
+rectangle4
+OK
+OK
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+OK
+#New object: polyline1
+OK
+#New object: polyline2
+OK
+#New object: polyline3
+OK
+#New object: polyline4
+OK
+#New object: polyline5
+OK
+#New object: agg1
+OK
+#New object: agg2
+OK
+#New object: agg3
+OK
+#New object: agg4
+OK
+#New object: agg5
+OK
+OK
+#New object: agg5
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+polyline1
+polyline2
+polyline3
+polyline4
+polyline5
+agg1
+agg2
+agg3
+agg4
+agg5
+OK
+
+OK
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+polyline1
+polyline2
+polyline3
+polyline4
+polyline5
+agg1
+agg2
+agg3
+agg4
+agg5
+OK
+#New object: circle5
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+circle1
+circle2
+cirlce3
+ERR
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+circle1
+circle2
+cirlce3
+circle4
+line1
+line2
+line3
+line4
+rectangle1
+rectangle2
+polyline1
+polyline2
+polyline3
+polyline4
+polyline5
+agg1
+agg2
+agg3
+agg4
+agg5
+ERR
+
