@@ -4,22 +4,22 @@
 // Auteur : B3229
 // =====
 
-#include "AO.h"
+#include "Agregated.h"
 
-AO::AO()
+Agregated::Agregated()
 {
 }
 
-AO::~AO()
+Agregated::~Agregated()
 {
 }
 
-bool AO::Add(std::string aName, GeoElt *pElt)
+bool Agregated::Add(std::string aName, GeoElt *pElt)
 {
 	elements.insert(make_pair(aName,pElt));
 }
 
-bool AO::Move(int pX,int pY)
+bool Agregated::Move(int pX,int pY)
 {
 	bool moved = true;
 	for(std::map<std::string,GeoElt*>::iterator it = elements.begin();it != elements.end();++it)
@@ -29,10 +29,10 @@ bool AO::Move(int pX,int pY)
 	return moved;
 }
 
-std::string AO::Display(std::string aName)
+std::string Agregated::Display(std::string aName)
 {
 	std::ostringstream description;
-	description << "AO " << aName ;
+	description << "Agregated " << aName ;
   for(std::map<std::string,GeoElt*>::iterator it = elements.begin(); it != elements.end();++it)
 	{
 		description << " " << it->first;

@@ -4,19 +4,10 @@
 # Auteur : B3229
 # =====
 
-MODE=RELEASE
-CC=g++
-CFLAGS=-std=c++0x
-LDFLAGS=
-PATHEXEC=bin/
-EXEC=inherit
-TARGET=$(addprefix $(PATHEXEC), $(EXEC))
-SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp AO.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp FileCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
-OBJ=$(SRC:.cpp=.o)
+include Config.mk
 
-ifeq ($(MODE),DEBUG)
-	CFLAGS:=$(CFLAGS) -g
-endif
+SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp Agregated.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp FileCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
+OBJ=$(SRC:.cpp=.o)
 
 all: $(TARGET)
 
@@ -39,7 +30,7 @@ Polyline.o: Polyline.h GeoElt.h Point.h
 
 Rectangle.o: Rectangle.h GeoElt.h
 
-AO.o: AO.h GeoElt.h
+Agregated.o: Agregated.h GeoElt.h
 
 Command.o: Command.h GeoElt.h Model.h
 
@@ -55,7 +46,7 @@ Controller.o: Controller.h Config.h Model.h Command.h
 
 Interpreter.o: Interpreter.h
 
-Executor.o: Executor.h Config.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h AO.h
+Executor.o: Executor.h Config.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h Agregated.h
 
 test: $(TARGET)
 	@make -C tests
@@ -65,4 +56,4 @@ clean:
 	@make clean -C tests
 
 mrproper: clean
-	@rm -rf $(PATHEXEC)
+	@rm -rf $(TARGET)

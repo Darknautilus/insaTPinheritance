@@ -1,12 +1,10 @@
-BINOME=B3229
-
 echo -----------------------------------------------------------
-echo Tests pour le binome : $BINOME
+echo Tests pour le binome : $1
 echo -----------------------------------------------------------
 
 nTestCount=0
 nSuccesfulTests=0
-nStrResult="$BINOME "
+nStrResult="$1 "
 
 echo ADD.1
 let "nTestCount=$nTestCount+1"

@@ -18,7 +18,6 @@ Executor::~Executor()
 		std::cout << "Executor destroyed" << std::endl;
 	delete controller;
 }
-
 bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 {
 	if(feedback->Status == CommandStatus::OK)
@@ -226,7 +225,7 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 							}
 							break;
 						case CommandCode::AO:
-							element = new AO();
+							element = new Agregated();
 							break;
 						default:
 							break;

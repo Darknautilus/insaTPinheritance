@@ -11,7 +11,7 @@
 
 #include "Config.h"
 
-#include "AO.h"
+#include "Agregated.h"
 #include "Circle.h"
 #include "Rectangle.h"
 #include "Line.h"

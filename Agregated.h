@@ -11,11 +11,11 @@
 
 #include "GeoElt.h"
 
-class AO : public GeoElt
+class Agregated : public GeoElt
 {
 	public:
-		AO();
-		virtual ~AO();
+		Agregated();
+		virtual ~Agregated();
 
 		bool Add(std::string, GeoElt*);
 		bool Move(int,int);

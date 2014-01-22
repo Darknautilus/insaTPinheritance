@@ -1,7 +1,17 @@
-EXEC=test.sh
+# =====
+# INSA Lyon, Département Informatique
+# TP C++ 3IF :  Héritage et polymorphisme
+# Auteur : B3229
+# =====
+
+PATHTOROOT=../
+
+include $(PATHTOROOT)Config.mk
+
+TESTFILE=test.sh
 
 all:
-	@bash $(EXEC)
+	@bash $(TESTFILE) $(PATHTOROOT)$(TARGET)
 
 clean:
-	@rm results.txt *.tmp
+	@rm -rf results.txt *.tmp
