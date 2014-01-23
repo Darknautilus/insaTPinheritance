@@ -18,6 +18,7 @@ Executor::~Executor()
 		std::cout << "Executor destroyed" << std::endl;
 	delete controller;
 }
+
 bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 {
 	if(feedback->Status == CommandStatus::OK)
@@ -75,11 +76,12 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				}
 				else if(!write)
 				{
-					std::cout << "# save cancelled" << std::endl;
+					printMessage("writing cancelled by user");
 				}
 				else
 				{
-					std::cout << "Error" << std::endl;
+					printStatus(CommandStatus::GENERIC_ERROR);
+					printMessage("error writing in the file");
 				}
 			}
 		}
@@ -95,12 +97,14 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 					}
 					else
 					{
-						std::cout << "Error 2" << std::endl;
+						printStatus(CommandStatus::GENERIC_ERROR);
+						printMessage("error loading the file");
 					}
 				}
 				else
 				{
-					std::cout << "Error 1" << std::endl;
+					printStatus(CommandStatus::GENERIC_ERROR);
+					printMessage("file could't be opened");
 				}
 			}
 		}
@@ -129,10 +133,16 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				{
 					printStatus(feedback->Status);
 				}
+				else if(!moved)
+				{
+					printStatus(CommandStatus::GENERIC_ERROR);
+					printMessage("error moving the element");
+				}
 			}
 			else
 			{
-				std::cout << "Error" << std::endl;
+				printStatus(CommandStatus::GENERIC_ERROR);
+				printMessage("some arguments aren't in good format");
 			}
 		}
 		else if(feedback->Code == CommandCode::DELETE)
@@ -149,10 +159,15 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				{
 					printStatus(feedback->Status);
 				}
+				else if(!deleted)
+				{
+					printStatus(CommandStatus::GENERIC_ERROR);
+					printMessage("some elements couldn't be deleted");
+				}
 			}
 			else
 			{
-				std::cout << "Vide" << std::endl;
+				printStatus(CommandStatus::BAD_PARAM_NB);
 			}
 		}
 		else
@@ -202,10 +217,13 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				}
 				if(parsageError)
 				{
-					std::cout << "bad values" << std::endl;
+					printStatus(CommandStatus::GENERIC_ERROR);
+					printMessage("some arguments aren't in the good format");
 				}
 				else
 				{
+					bool isError = false;
+					int addError;
 					switch(feedback->Code)
 					{
 						case CommandCode::CIRCLE:
@@ -219,21 +237,56 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 							break;
 						case CommandCode::POLYLINE:
 							element = new Polyline();
+							addError = 0;
 							for(int i = 0; i < intArgs.size(); i+=2)
 							{
-								((Polyline*)element)->Add(new Point(intArgs.at(i),intArgs.at(i+1)));
+								if(((Polyline*)element)->Add(new Point(intArgs.at(i),intArgs.at(i+1))))
+									addError++;
+							}
+							if(addError > 0)
+							{
+								printStatus(CommandStatus::GENERIC_ERROR);
+								printMessage("some points couldn't be added");
+								isError = true;
 							}
 							break;
 						case CommandCode::AO:
 							element = new Agregated();
+							GeoElt *nElement;
+							addError = 0;
+							for(int i = 1; i < feedback->Args.size(); i++)
+							{
+								if((nElement = controller->Exists(feedback->Args.at(i))) != 0)
+								{
+									if(!((Agregated*)element)->Add(feedback->Args.at(i), nElement))
+										addError++;
+								}
+								else
+								{
+									addError++;
+								}
+							}
+							if(addError > 0)
+							{
+								printStatus(CommandStatus::GENERIC_ERROR);
+								printMessage("some elements couldn't be agregated");
+								isError = true;
+							}
 							break;
 						default:
 							break;
 					}
-					bool added = controller->Add(feedback->Args.at(0),element,pFCommand);
-					if(pFCommand == 0 && added)
+					if(!isError)
 					{
-						printStatus(feedback->Status);
+						bool added = controller->Add(feedback->Args.at(0),element,pFCommand);
+						if(pFCommand == 0 && added)
+						{
+							printStatus(feedback->Status);
+						}
+						else if(!added)
+						{
+							printStatus(CommandStatus::GENERIC_ERROR);
+						}
 					}
 				}
 			}

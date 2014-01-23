@@ -35,6 +35,14 @@ class Controller
 		bool Redo();
 		void List();
 		void Clear();
+		/**
+		 * Vérifie que le nom donné existe. Vérifie dans le modèle que l'élément spécifié par son nom existe.
+		 *
+		 * \param name Le nom de l'élément
+		 * \return Un pointeur vers l'élément s'il existe et 0 sinon.
+		 * \sa Model::Exists()
+		 */
+		GeoElt *Exists(std::string name);
 
 	protected:
 		std::list<Command*> actions;

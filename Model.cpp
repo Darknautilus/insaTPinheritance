@@ -114,3 +114,16 @@ void Model::Clear()
 	}
 	elements.clear();
 }
+
+GeoElt *Model::Exists(std::string pName)
+{
+	eltIt it = elements.find(pName);
+	if(it == elements.end() || it->second.deleted)
+	{
+		return 0;
+	}
+	else
+	{
+		return it->second.element;
+	}
+}

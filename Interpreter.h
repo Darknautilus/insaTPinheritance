@@ -38,9 +38,15 @@ enum CommandCode
 enum CommandStatus
 {
 	OK,
+	GENERIC_ERROR,
 	BAD_COMMAND,
 	BAD_PARAM_NB
 };
+
+inline void printMessage(std::string pMessage)
+{
+	std::cout << "#" << pMessage << std::endl;
+}
 
 inline void printStatus(CommandStatus pStatus)
 {
@@ -53,11 +59,14 @@ inline void printStatus(CommandStatus pStatus)
 		std::cout << "ERR" << std::endl;
 		switch(pStatus)
 		{
+			case CommandStatus::GENERIC_ERROR:
+				//printMessage("an error occured");
+				break;
 			case CommandStatus::BAD_COMMAND:
-				std::cout << "#invalid command" << std::endl;
+				printMessage("invalid command");
 				break;
 			case CommandStatus::BAD_PARAM_NB:
-				std::cout << "#invalid parameters" << std::endl;
+				printMessage("invalid parameters");
 				break;
 			default:
 				break;

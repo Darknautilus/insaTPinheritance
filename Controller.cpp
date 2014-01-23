@@ -222,3 +222,8 @@ void Controller::Clear()
 	currAction = actions.rbegin();
 	model.Clear();
 }
+
+GeoElt *Controller::Exists(std::string pName)
+{
+	return model.Exists(pName);
+}

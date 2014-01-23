@@ -17,6 +17,7 @@ Agregated::~Agregated()
 bool Agregated::Add(std::string aName, GeoElt *pElt)
 {
 	elements.insert(make_pair(aName,pElt));
+	return true;
 }
 
 bool Agregated::Move(int pX,int pY)
@@ -32,7 +33,7 @@ bool Agregated::Move(int pX,int pY)
 std::string Agregated::Display(std::string aName)
 {
 	std::ostringstream description;
-	description << "Agregated " << aName ;
+	description << "OA " << aName ;
   for(std::map<std::string,GeoElt*>::iterator it = elements.begin(); it != elements.end();++it)
 	{
 		description << " " << it->first;

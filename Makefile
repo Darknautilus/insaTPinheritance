@@ -48,6 +48,9 @@ Interpreter.o: Interpreter.h
 
 Executor.o: Executor.h Config.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h Agregated.h
 
+run: $(TARGET)
+	./$(TARGET)
+
 test: $(TARGET)
 	@make -C tests
 
