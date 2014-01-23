@@ -28,3 +28,15 @@ bool GeoElt::DeleteAgregated(int pInd)
 	agregated.erase(pInd);
 	return true;
 }
+
+std::list<Agregated*> GeoElt::GetAgregated()
+{
+	std::list<Agregated*> ret;
+	for(std::map<int,Agregated*>::iterator it = agregated.begin();
+			it != agregated.end();
+			++it)
+	{
+		ret.push_back(it->second);
+	}
+	return ret;
+}

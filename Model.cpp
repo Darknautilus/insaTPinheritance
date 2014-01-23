@@ -32,6 +32,13 @@ bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 	else if(it->second.deleted && !pHard)
 	{
 		it->second.deleted = false;
+		std::list<Agregated*> agr = it->second.element->GetAgregated();
+		for(std::list<Agregated*>::iterator it = agr.begin();
+				it != agr.end();
+				++it)
+		{
+			(*it)->SetDeleted(pName,false);
+		}
 		return true;
 	}
 	else
@@ -51,13 +58,26 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 		if(pHard || !it->second.deleted)
 		{
 			element = it->second.element;
+			std::list<Agregated*> agr = element->GetAgregated();
 			if(pHard)
 			{
 				elements.erase(it);
+				for(std::list<Agregated*>::iterator it = agr.begin();
+						it != agr.end();
+						++it)
+				{
+					(*it)->Delete(pName);
+				}
 			}
 			else
 			{
 				it->second.deleted = true;
+				for(std::list<Agregated*>::iterator it = agr.begin();
+						it != agr.end();
+						++it)
+				{
+					(*it)->SetDeleted(pName,true);
+				}
 			}
 		}
 	}

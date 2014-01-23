@@ -13,6 +13,7 @@ struct AgregatedElement
 {
 	GeoElt *element;
 	int index;
+	bool deleted;
 };
 
 class Agregated : public GeoElt
@@ -23,6 +24,7 @@ class Agregated : public GeoElt
 
 		bool Add(std::string, GeoElt*);
 		bool Delete(std::string);
+		bool SetDeleted(std::string,bool);
 
 		bool Move(int,int);
 		std::string Display(std::string);

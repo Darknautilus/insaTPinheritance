@@ -45,8 +45,6 @@ class Model
 
 	protected:
 		std::map<std::string,ElementMarker> elements;
-	
-	friend bool Executor::Execute(CommandFeedback*,FileCommand*);
 };
 
 #endif

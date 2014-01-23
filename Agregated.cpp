@@ -12,6 +12,12 @@ Agregated::Agregated()
 
 Agregated::~Agregated()
 {
+	for(std::map<std::string,AgregatedElement>::iterator it = elements.begin();
+			it != elements.end();
+			++it)
+	{
+		it->second.element->DeleteAgregated(it->second.index);
+	}
 }
 
 bool Agregated::Add(std::string pName, GeoElt *pElt)
@@ -19,6 +25,7 @@ bool Agregated::Add(std::string pName, GeoElt *pElt)
 	AgregatedElement elt;
 	elt.element = pElt;
 	elt.index = pElt->AddAgregated(this);
+	elt.deleted = false;
 	elements.insert(std::make_pair(pName,elt));
 	return true;
 }
@@ -34,12 +41,24 @@ bool Agregated::Delete(std::string pName)
 	return true;
 }
 
+bool Agregated::SetDeleted(std::string pName, bool pDeleted)
+{
+	std::map<std::string,AgregatedElement>::iterator it = elements.find(pName);
+	if(it != elements.end())
+	{
+		it->second.deleted = pDeleted;
+	}
+}
+
 bool Agregated::Move(int pX,int pY)
 {
 	bool moved = true;
 	for(std::map<std::string,AgregatedElement>::iterator it = elements.begin();it != elements.end();++it)
 	{
-		moved = it->second.element->Move(pX,pY);
+		if(!it->second.deleted)
+		{
+			moved = it->second.element->Move(pX,pY);
+		}
 	}
 	return moved;
 }
@@ -50,7 +69,10 @@ std::string Agregated::Display(std::string aName)
 	description << "OA " << aName ;
   for(std::map<std::string,AgregatedElement>::iterator it = elements.begin(); it != elements.end();++it)
 	{
-		description << " " << it->first;
+		if(!it->second.deleted)
+		{
+			description << " " << it->first;
+		}
 	}
 	description << std::endl;
 

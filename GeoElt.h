@@ -27,6 +27,7 @@ class GeoElt
 
 		int AddAgregated(Agregated*);
 		bool DeleteAgregated(int);
+		std::list<Agregated*> GetAgregated();
 
 	protected:
 		std::map<int,Agregated*> agregated;/**< The Agregated elements where this element is in.*/
