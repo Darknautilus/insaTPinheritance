@@ -12,14 +12,14 @@
 class MoveCommand : public Command
 {
 	public:
-		MoveCommand(Model*,std::vector<std::string>&,Point*);
+		MoveCommand(Model*,std::vector<std::string>&,Point);
 		virtual ~MoveCommand();
 
 		bool Do();
 		bool Undo();
 
 	protected:
-		Point *direction;
+		Point direction;
 
 };
 

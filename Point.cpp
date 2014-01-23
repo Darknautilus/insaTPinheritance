@@ -6,6 +6,11 @@
 
 #include "Point.h"
 
+std::ostream& operator <<(std::ostream &stream,Point& p)
+{
+	stream << "(" << p.getX() << ";" << p.getY() << ")";
+}
+
 Point::Point(int pX, int pY) : x(pX), y(pY)
 {
 }
@@ -23,7 +28,7 @@ bool Point::Move(int pX, int pY)
 
 Point* Point::Inverse() const
 {
-	return new Point(-x,-y);
+	return new Point((-x),(-y));
 }
 
 int Point::getX() const

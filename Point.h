@@ -7,6 +7,8 @@
 #ifndef POINT_H
 #define POINT_H
 
+#include <iostream>
+
 class Point
 {
 	public:
@@ -22,5 +24,7 @@ class Point
 		int x;
 		int y;
 };
+
+std::ostream& operator <<(std::ostream &,Point&);
 
 #endif

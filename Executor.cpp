@@ -128,7 +128,7 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 			if(isInt)
 			{
 				Point direction(x,y);
-				bool moved = controller->Move(feedback->Args[0],&direction,pFCommand);
+				bool moved = controller->Move(feedback->Args[0],direction,pFCommand);
 				if(pFCommand == 0 && moved)
 				{
 					printStatus(feedback->Status);

@@ -88,7 +88,7 @@ bool Controller::Delete(std::vector<std::string> pNames, FileCommand *pFCommand)
 	}
 }
 
-bool Controller::Move(std::string pName, Point *pDirection, FileCommand *pFCommand)
+bool Controller::Move(std::string pName, Point &pDirection, FileCommand *pFCommand)
 {
 	std::vector<std::string> names;
 	names.push_back(pName);

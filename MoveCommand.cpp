@@ -6,7 +6,7 @@
 
 #include "MoveCommand.h"
 
-MoveCommand::MoveCommand(Model *pModel, std::vector<std::string>& pNames, Point *pDirection) : Command(pModel,pNames), direction(pDirection)
+MoveCommand::MoveCommand(Model *pModel, std::vector<std::string>& pNames, Point pDirection) : Command(pModel,pNames), direction(pDirection)
 {
 }
 
@@ -18,10 +18,14 @@ MoveCommand::~MoveCommand()
 
 bool MoveCommand::Do()
 {
-	return model->Move(names.front(),direction) != 0;
+	if(DEBUG)
+		std::cout << "--> " << direction << std::endl;
+	return model->Move(names.front(),&direction) != 0;
 }
 
 bool MoveCommand::Undo()
 {
-	return model->Move(names.front(),direction->Inverse()) != 0;
+	if(DEBUG)
+		std::cout << direction << " --> " << *(direction.Inverse()) << std::endl;
+	return model->Move(names.front(),direction.Inverse()) != 0;
 }

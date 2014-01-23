@@ -28,7 +28,7 @@ class Controller
 
 		bool Add(std::string,GeoElt*,FileCommand* = 0);
 		bool Delete(std::vector<std::string>,FileCommand* = 0);
-		bool Move(std::string,Point*,FileCommand* = 0);
+		bool Move(std::string,Point&,FileCommand* = 0);
 		bool LoadFromFile(std::string, Interpreter*, Executor*);
 		bool SaveInFile(std::string);
 		bool Undo();
