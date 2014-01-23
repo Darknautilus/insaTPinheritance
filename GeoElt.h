@@ -8,10 +8,13 @@
 #define GEOELT_H
 
 #include <list>
+#include <map>
 #include <string>
 #include <sstream>
 
 #include "Point.h"
+
+class Agregated;
 
 class GeoElt
 {
@@ -21,6 +24,12 @@ class GeoElt
 
 		virtual bool Move(int,int) = 0;
 		virtual std::string Display(std::string)=0;
+
+		int AddAgregated(Agregated*);
+		bool DeleteAgregated(int);
+
+	protected:
+		std::map<int,Agregated*> agregated;/**< The Agregated elements where this element is in.*/
 };
 
 #endif

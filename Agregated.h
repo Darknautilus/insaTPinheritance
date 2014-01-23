@@ -7,9 +7,13 @@
 #ifndef AO_H
 #define AO_H
 
-#include <map>
-
 #include "GeoElt.h"
+
+struct AgregatedElement
+{
+	GeoElt *element;
+	int index;
+};
 
 class Agregated : public GeoElt
 {
@@ -18,11 +22,13 @@ class Agregated : public GeoElt
 		virtual ~Agregated();
 
 		bool Add(std::string, GeoElt*);
+		bool Delete(std::string);
+
 		bool Move(int,int);
 		std::string Display(std::string);
 
 	protected:
-		std::map<std::string,GeoElt*> elements;
+		std::map<std::string,AgregatedElement> elements;
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 include Config.mk
 
-SRC=insaInherit.cpp Model.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp Agregated.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp FileCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
+SRC=insaInherit.cpp Model.cpp GeoElt.cpp Point.cpp Circle.cpp Line.cpp Polyline.cpp Rectangle.cpp Agregated.cpp Command.cpp AddCommand.cpp DeleteCommand.cpp MoveCommand.cpp FileCommand.cpp Controller.cpp Interpreter.cpp Executor.cpp
 OBJ=$(SRC:.cpp=.o)
 
 all: $(TARGET)
@@ -19,6 +19,8 @@ $(TARGET): $(OBJ)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 Model.o: Model.h GeoElt.h
+
+GeoElt.o: GeoElt.h Agregated.h
 
 Point.o: Point.h
 
