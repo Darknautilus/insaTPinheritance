@@ -29,7 +29,7 @@ class Model
 
 		bool Add(GeoElt*, std::string, bool = false);
 		GeoElt* Delete(std::string, bool = false);
-		GeoElt* Move(std::string, Point*);
+		GeoElt* Move(std::string, Point*, int);
 		bool SaveInFile(std::string);
 		void List();
 		void Clear();

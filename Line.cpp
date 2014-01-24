@@ -22,18 +22,26 @@ Line::~Line()
 	}
 }
 
-bool Line::Move(int pX, int pY)
+bool Line::Move(int pX, int pY, int pCommandId)
 {
-	bool moved = true;
-	for(std::list<Point*>::iterator it = ends.begin();
-			it != ends.end();
-			++it)
+	bool moved = !GeoElt::Move(pX,pY,pCommandId);
+	if(moved)
 	{
-		moved = (*it)->Move(pX,pY);
-		if(!moved)
-			break;
+		return true;
 	}
-	return moved;
+	else
+	{
+		moved = true;
+		for(std::list<Point*>::iterator it = ends.begin();
+				it != ends.end();
+				++it)
+		{
+			moved = (*it)->Move(pX,pY);
+			if(!moved)
+				break;
+		}
+		return moved;
+	}
 }
 
 std::string Line::Display(std::string aName)

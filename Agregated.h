@@ -26,7 +26,7 @@ class Agregated : public GeoElt
 		bool Delete(std::string);
 		bool SetDeleted(std::string,bool);
 
-		bool Move(int,int);
+		bool Move(int,int,int);
 		std::string Display(std::string);
 
 	protected:

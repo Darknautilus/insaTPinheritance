@@ -18,9 +18,12 @@ Rectangle::~Rectangle()
 	delete PtInfD;
 }
 
-bool Rectangle::Move(int pX, int pY)
+bool Rectangle::Move(int pX, int pY, int pCommandId)
 {
-	return (PtSupG->Move(pX,pY) && PtInfD->Move(pX,pY));
+	if(GeoElt::Move(pX,pY,pCommandId))
+		return (PtSupG->Move(pX,pY) && PtInfD->Move(pX,pY));
+	else
+		return true;
 }
 
 std::string Rectangle::Display(std::string aName)

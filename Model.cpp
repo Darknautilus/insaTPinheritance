@@ -86,13 +86,13 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 	return element;
 }
 
-GeoElt* Model::Move(std::string pName, Point *pDir)
+GeoElt* Model::Move(std::string pName, Point *pDir, int pCommandId)
 {
 	GeoElt *element = 0;
 	eltIt it = elements.find(pName);
 	if(it != elements.end() && !it->second.deleted)
 	{
-		if(it->second.element->Move(pDir->getX(),pDir->getY()))
+		if(it->second.element->Move(pDir->getX(),pDir->getY(), pCommandId))
 			element = it->second.element;
 	}
 	return element;
