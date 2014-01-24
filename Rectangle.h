@@ -15,7 +15,7 @@ class Rectangle : public GeoElt
 		Rectangle(Point*,Point*);
 		virtual ~Rectangle();
 
-		bool Move(int,int);
+		bool Move(int,int,int);
 		std::string Display(std::string);
 
 	protected:

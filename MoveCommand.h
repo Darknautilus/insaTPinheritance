@@ -20,6 +20,7 @@ class MoveCommand : public Command
 
 	protected:
 		Point direction;
+		static int commandId;
 
 };
 

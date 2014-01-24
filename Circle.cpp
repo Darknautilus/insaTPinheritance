@@ -14,9 +14,12 @@ Circle::~Circle()
 {
 }
 
-bool Circle::Move(int pX, int pY)
+bool Circle::Move(int pX, int pY, int pCommandId)
 {
-	return center.Move(pX, pY);
+	if(GeoElt::Move(pX,pY,pCommandId))
+		return center.Move(pX, pY);
+	else
+		return true;
 }
 
 std::string Circle::Display(std::string aName)
