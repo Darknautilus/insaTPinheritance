@@ -1,33 +1,23 @@
 OK
-#New object: circle1
 OK
-#New object: circle2
 ERR
 #invalid parameters
 OK
-#New object: rectangle1
 OK
-#New object: line1
 ERR
 #invalid parameters
 ERR
 #invalid parameters
 OK
-#New object: polyline1
 ERR
 #invalid parameters
 OK
-#New object: polyline3
 OK
-#New object: agregat1
 ERR
 #invalid parameters
 OK
-#New object: agregat3
 OK
-#New object: agregat4
 OK
-#New object: agregat5
 ERR
 #invalid parameters 
 ERR
@@ -38,3 +28,13 @@ ERR
 #invalid parameters
 ERR
 #invalid parameters
+circle1 12 15 45
+circle2 10 20 80
+rectangle1 56 46 108 4536
+line1 56 46 108 4536
+polyline1 56 46 108 4536 80 100
+polyline3 70 45 -40 60 77 97 88 87
+agregat1 circle1 line1 polyline3
+agregat3 rectangle1
+agregat4 polyline1 line1 agregat1
+agregat5 agregat4 agregat1

@@ -44,7 +44,7 @@ CLEAR
 LIST
 UNDO
 LIST
-C circle5 30 15 40
+C circle5 30 15 40
 UNDO
 UNDO
 UNDO

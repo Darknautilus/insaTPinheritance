@@ -10,7 +10,7 @@ echo ADD.1
 let "nTestCount=$nTestCount+1"
 ./$1 < ADD.in > temp1.txt
 grep -v '^#' temp1.txt > temp2.txt
-diff -wB ADD.out temp2.txt
+diff -wB ADD.out temp1.txt
 if [ $? -eq 0 ]
         then
 		echo PASSED
@@ -25,7 +25,7 @@ echo MOVE.1
 let "nTestCount=$nTestCount+1"
 ./$1 < MOVE.in > temp1.txt
 grep -v '^#' temp1.txt > temp2.txt
-diff -wB MOVE.out temp2.txt
+diff -wB MOVE.out temp1.txt
 if [ $? -eq 0 ]
         then
 		echo PASSED
@@ -40,7 +40,7 @@ echo DELETE.1
 let "nTestCount=$nTestCount+1"
 ./$1 < REMOVE.in > temp1.txt
 grep -v '^#' temp1.txt > temp2.txt
-diff -wB REMOVE.out temp2.txt
+diff -wB REMOVE.out temp1.txt
 if [ $? -eq 0 ]
         then
 		echo PASSED
