@@ -16,7 +16,7 @@ class Polyline : public GeoElt
 		virtual ~Polyline();
 
 		bool Add(Point*);
-		bool Move(int,int);
+		bool Move(int,int,int);
 		std::string Display(std::string);
 		
 	protected:

@@ -7,6 +7,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define DEBUG false
+namespace constants
+{
+	const bool DEBUG = false;
+}
 
 #endif

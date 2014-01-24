@@ -12,16 +12,16 @@ AddCommand::AddCommand(Model *pModel, std::vector<std::string>& pNames, std::vec
 
 AddCommand::~AddCommand()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tDestroying AddCommand" << std::endl;
 	for(int i = 0; i < elements.size(); i++)
 	{
-		if(DEBUG)
+		if(constants::DEBUG)
 			std::cout << "\t\t";
 		model->Delete(names.at(i),true);
 		delete elements.at(i);
 	}
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tdestroyed" << std::endl;
 }
 

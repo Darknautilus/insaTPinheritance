@@ -11,17 +11,17 @@ FileCommand::FileCommand(Model *pModel) : Command(pModel)
 
 FileCommand::~FileCommand()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tDestoying FileCommand" << std::endl;
 	for(std::list<Command*>::iterator it = commands.begin();
 			it != commands.end();
 			++it)
 	{
-		if(DEBUG)
+		if(constants::DEBUG)
 			std::cout << "\t";
 		delete *it;
 	}
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tdestoyed" << std::endl;
 }
 

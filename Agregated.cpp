@@ -50,14 +50,14 @@ bool Agregated::SetDeleted(std::string pName, bool pDeleted)
 	}
 }
 
-bool Agregated::Move(int pX,int pY)
+bool Agregated::Move(int pX,int pY, int pCommandId)
 {
 	bool moved = true;
 	for(std::map<std::string,AgregatedElement>::iterator it = elements.begin();it != elements.end();++it)
 	{
 		if(!it->second.deleted)
 		{
-			moved = it->second.element->Move(pX,pY);
+			moved = it->second.element->Move(pX,pY,pCommandId);
 		}
 	}
 	return moved;

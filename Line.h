@@ -15,7 +15,7 @@ class Line : public GeoElt
 		Line(Point*,Point*);
 		virtual ~Line();
 
-		bool Move(int,int);
+		bool Move(int,int,int);
 		std::string Display(std::string);
 
 	protected:

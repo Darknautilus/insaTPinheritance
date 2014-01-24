@@ -26,18 +26,26 @@ bool Polyline::Add(Point *pPt)
 	return true;
 }
 
-bool Polyline::Move(int pX, int pY)
+bool Polyline::Move(int pX, int pY, int pCommandId)
 {
-	bool moved = true;
-	for(std::list<Point*>::iterator it = points.begin();
-			it != points.end();
-			++ it)
+	bool moved = !GeoElt::Move(pX,pY,pCommandId);
+	if(moved)
 	{
-		moved = (*it)->Move(pX,pY);
-		if(!moved)
-			break;
+		return true;
 	}
-	return moved;
+	else
+	{
+		moved = true;
+		for(std::list<Point*>::iterator it = points.begin();
+				it != points.end();
+				++ it)
+		{
+			moved = (*it)->Move(pX,pY);
+			if(!moved)
+				break;
+		}
+		return moved;
+	}
 }
 
 std::string Polyline::Display(std::string aName)

@@ -15,7 +15,7 @@ class Circle : public GeoElt
 		Circle(int,int,int);
 		virtual ~Circle();
 
-		bool Move(int,int);
+		bool Move(int,int,int);
 		std::string Display(std::string);
 		std::string GetName()const;
 

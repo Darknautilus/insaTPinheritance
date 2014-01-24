@@ -40,3 +40,16 @@ std::list<Agregated*> GeoElt::GetAgregated()
 	}
 	return ret;
 }
+
+bool GeoElt::Move(int pX, int pY, int pCommandId)
+{
+	if(lastMoveCommandId == pCommandId)
+	{
+		return false;
+	}
+	else
+	{
+		lastMoveCommandId = pCommandId;
+		return true;
+	}
+}

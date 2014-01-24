@@ -49,7 +49,7 @@ bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 
 GeoElt* Model::Delete(std::string pName, bool pHard)
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "Deleting "+pName << std::endl;
 	GeoElt *element = 0;
 	eltIt it = elements.find(pName);
@@ -81,18 +81,18 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 			}
 		}
 	}
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << pName+" deleted" << std::endl;
 	return element;
 }
 
-GeoElt* Model::Move(std::string pName, Point *pDir)
+GeoElt* Model::Move(std::string pName, Point *pDir, int pCommandId)
 {
 	GeoElt *element = 0;
 	eltIt it = elements.find(pName);
 	if(it != elements.end() && !it->second.deleted)
 	{
-		if(it->second.element->Move(pDir->getX(),pDir->getY()))
+		if(it->second.element->Move(pDir->getX(),pDir->getY(), pCommandId))
 			element = it->second.element;
 	}
 	return element;

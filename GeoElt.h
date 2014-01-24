@@ -19,10 +19,10 @@ class Agregated;
 class GeoElt
 {
 	public:
-		GeoElt() {}
+		GeoElt() : lastMoveCommandId(0) {}
 		virtual ~GeoElt() {}
 
-		virtual bool Move(int,int) = 0;
+		virtual bool Move(int,int,int) = 0;
 		virtual std::string Display(std::string)=0;
 
 		int AddAgregated(Agregated*);
@@ -30,7 +30,8 @@ class GeoElt
 		std::list<Agregated*> GetAgregated();
 
 	protected:
-		std::map<int,Agregated*> agregated;/**< The Agregated elements where this element is in.*/
+		int lastMoveCommandId;
+		std::map<int,Agregated*> agregated;/**< The elements where this element is agregated in*/
 };
 
 #endif

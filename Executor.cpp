@@ -14,7 +14,7 @@ Executor::Executor(Interpreter *pInterpreter) : interpreter(pInterpreter)
 
 Executor::~Executor()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "Executor destroyed" << std::endl;
 	delete controller;
 }
