@@ -12,7 +12,7 @@ DeleteCommand::DeleteCommand(Model *pModel, std::vector<std::string>& pNames) : 
 
 DeleteCommand::~DeleteCommand()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tDeleteCommand destroyed" << std::endl;
 }
 

@@ -14,14 +14,14 @@ MoveCommand::MoveCommand(Model *pModel, std::vector<std::string>& pNames, Point 
 
 MoveCommand::~MoveCommand()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "\tMoveCommand destroyed" << std::endl;
 }
 
 bool MoveCommand::Do()
 {
 	commandId++;
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "--> " << direction << std::endl;
 	return model->Move(names.front(),&direction,commandId) != 0;
 }
@@ -29,7 +29,7 @@ bool MoveCommand::Do()
 bool MoveCommand::Undo()
 {
 	commandId--;
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << direction << " --> " << *(direction.Inverse()) << std::endl;
 	return model->Move(names.front(),direction.Inverse(),commandId) != 0;
 }

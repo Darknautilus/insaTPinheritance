@@ -14,7 +14,7 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-	if(DEBUG)
+	if(constants::DEBUG)
 		std::cout << "Controller destroyed" << std::endl;
 	for(std::list<Command*>::iterator it = actions.begin();
 			it != actions.end();
