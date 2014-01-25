@@ -4,6 +4,7 @@
 // Auteur : B3229
 // =====
 
+#include <unistd.h>
 #include <iostream>
 
 #include "Executor.h"
@@ -18,7 +19,10 @@ int main(int argc, const char **argv)
 	bool again = true;
 	while(again)
 	{
-		std::cout << ">> " << std::flush;
+		if(isatty(STDOUT_FILENO))
+		{
+			std::cout << ">> " << std::flush;
+		}
 		std::getline(std::cin,input);
 		if(!input.empty())
 		{

@@ -9,7 +9,7 @@ CC=g++
 CFLAGS=-std=c++0x
 LDFLAGS=
 PATHEXEC=bin/
-EXEC=inherit
+EXEC=B3229
 TARGET=$(addprefix $(PATHEXEC), $(EXEC))
 
 ifeq ($(MODE),DEBUG)

@@ -5,7 +5,7 @@ echo -----------------------------------------------------------
 nTestCount=0
 nSuccesfulTests=0
 nStrResult="$1 "
-programme=$2
+programme=$1
 
 echo ADD.1
 let "nTestCount=$nTestCount+1"
