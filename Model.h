@@ -34,7 +34,7 @@ class Model
 		void List();
 		void Clear();
 		/**
-		 * Vérifie que le nom donné existe. Vérifie dans le modèle que l'élément spécifié par son nom existe.
+		 * Vérifie que l'élément donné existe. Vérifie dans le modèle que l'élément spécifié par son nom existe.
 		 * Attention, même si l'élément est dans le modèle, la fonction retournera faux si l'élément a été marque comme supprimé. Cela peut mener à des contradictions lors d'un Add par exemple : si l'élément est marqué comme supprimé, alors Exists() renverra bien faux mais Add échouera.
 		 *
 		 * \param name Le nom de l'élément

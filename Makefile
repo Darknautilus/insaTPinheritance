@@ -15,7 +15,7 @@ $(TARGET): $(OBJ)
 	@mkdir -p $(PATHEXEC)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp
+%.o: %.cpp Config.h
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 Model.o: Model.h GeoElt.h
@@ -44,11 +44,11 @@ MoveCommand.o: MoveCommand.h Command.h
 
 FileCommand.o: FileCommand.h Command.h
 
-Controller.o: Controller.h Config.h Model.h Command.h
+Controller.o: Controller.h Model.h Command.h
 
 Interpreter.o: Interpreter.h
 
-Executor.o: Executor.h Config.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h Agregated.h
+Executor.o: Executor.h Interpreter.h Controller.h Circle.h Line.h Polyline.h Rectangle.h Agregated.h
 
 run: $(TARGET)
 	./$(TARGET)
