@@ -1,19 +1,19 @@
-OK
-OK
-OK
-OK
-OK
-OK
-rectangle1 11 116 63 4606 
-l172v 56 46 108 4536 
-circle1 12 15 45
-agg1 rectangle1 circle1
-agg2 l172v agg1
-ERR
-OK
-MOVE agg2 -10 24
-rectangle1 1 117 53 4607 
-l172v 46 47 98 4537 
-circle1 2 16 45
-agg1 rectangle1 circle1
-agg2 l172v agg1
+>> OK
+>> OK
+>> OK
+>> OK
+>> OK
+>> OK
+>> R rectangle1 11 116 63 4606 
+L l172v 56 46 108 4536 
+C circle1 12 15 45
+OA agg1 rectangle1 circle1
+OA agg2 l172v agg1
+>> ERR
+>> OK
+>> MOVE agg2 -10 24
+>> R rectangle1 1 117 53 4607 
+L l172v 46 47 98 4537 
+C circle1 2 16 45
+OA agg1 rectangle1 circle1
+OA agg2 l172v agg1

@@ -19,3 +19,4 @@ AO circle2 line1 polyline3
 R line1 10 15 30 35
 PL polyline4 14 18
 LIST 
+exit

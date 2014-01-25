@@ -6,6 +6,6 @@ Oa agg2 l172v agg1
 MOVE rectangle1 -45 70
 LIST
 MOVE rectangle2 40 78
-LIST
 MOVE agg2 -10 1
 LIST
+exit

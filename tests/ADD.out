@@ -1,40 +1,40 @@
-OK
-OK
-ERR
+>> OK
+>> OK
+>> ERR
 #invalid parameters
-OK
-OK
-ERR
+>> OK
+>> OK
+>> ERR
 #invalid parameters
-ERR
+>> ERR
 #invalid parameters
-OK
-ERR
+>> OK
+>> ERR
 #invalid parameters
-OK
-OK
-ERR
+>> OK
+>> OK
+>> ERR
 #invalid parameters
-OK
-OK
-OK
-ERR
+>> OK
+>> OK
+>> OK
+>> ERR
 #invalid parameters 
-ERR
+>> ERR
 #invalid parameters
-ERR
+>> ERR
 #invalid parameters
-ERR
+>> ERR
 #invalid parameters
-ERR
+>> ERR
 #invalid parameters
-circle1 12 15 45
-circle2 10 20 80
-rectangle1 56 46 108 4536
-line1 56 46 108 4536
-polyline1 56 46 108 4536 80 100
-polyline3 70 45 -40 60 77 97 88 87
-agregat1 circle1 line1 polyline3
-agregat3 rectangle1
-agregat4 polyline1 line1 agregat1
-agregat5 agregat4 agregat1
+>> C circle1 12 15 45
+C circle2 10 20 80
+R rectangle1 56 46 108 4536
+L line1 56 46 108 4536
+PL polyline1 56 46 108 4536 80 100
+PL polyline3 70 45 -40 60 77 97 88 87
+OA agregat1 circle1 line1 polyline3
+OA agregat3 rectangle1
+OA agregat4 polyline1 line1 agregat1
+OA agregat5 agregat4 agregat1
