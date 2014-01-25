@@ -1,31 +1,24 @@
-OK
-#New object: rectangle1
-OK
-#New object: l172v
-OK
-#New object: circle1
-OK
-#New object: agg1
-OK
-#New object: agg2
-rectangle1
-l172v
-circle1
-agg1
-agg2
-OK
-#Delete object: rectangle1
-l172v
-circle1
-agg1
-agg2
-OK
-#Delete object: agg1
-l172v
-circle1
-agg2
-ERR
+>> OK
+>> OK
+>> OK
+>> OK
+>> OK
+>> R rectangle1 56 46 108 4536 
+L l172v 56 46 108 4536 
+C circle1 12 15 45
+OA agg1 rectangle1 circle1
+OA agg2 l172v agg1
+>> OK
+>> L l172v 56 46 108 4536 
+C circle1 12 15 45
+OA agg1 rectangle1 circle1
+OA agg2 l172v agg1
+>> OK
+>> L l172v 56 46 108 4536 
+C circle1 12 15 45
+OA agg2 l172v agg1
+>> ERR
 #Invalid parameters
-l172v
-circle1
-agg2
+>> L l172v 56 46 108 4536 
+C circle1 12 15 45
+OA agg2 l172v agg1

@@ -4,5 +4,8 @@ C circle1 12 15 45
 OA agg1 rectangle1 circle1
 Oa agg2 l172v agg1
 MOVE rectangle1 -45 70
+LIST
 MOVE rectangle2 40 78
-MOVE agg2 -10 24
+MOVE agg2 -10 1
+LIST
+exit
