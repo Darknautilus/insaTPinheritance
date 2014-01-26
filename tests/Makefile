@@ -8,10 +8,10 @@ PATHTOROOT=../
 
 include $(PATHTOROOT)Config.mk
 
-TESTFILE=test.sh
+TESTFILE=test.rb
 
 all:
-	@bash $(TESTFILE) $(PATHTOROOT)$(TARGET)
+	@ruby $(TESTFILE) $(PATHTOROOT)$(TARGET)
 
 clean:
 	@rm -rf results.txt *.tmp

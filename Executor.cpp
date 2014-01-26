@@ -240,7 +240,7 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 							addError = 0;
 							for(int i = 0; i < intArgs.size(); i+=2)
 							{
-								if(((Polyline*)element)->Add(new Point(intArgs.at(i),intArgs.at(i+1))))
+								if(!((Polyline*)element)->Add(new Point(intArgs.at(i),intArgs.at(i+1))))
 									addError++;
 							}
 							if(addError > 0)

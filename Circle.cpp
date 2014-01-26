@@ -25,6 +25,6 @@ bool Circle::Move(int pX, int pY, int pCommandId)
 std::string Circle::Display(std::string aName)
 {
 	std::ostringstream description;
-	description << "C " << aName <<" " << center.getX() << " " << center.getY() << " " << radius << std::endl;
+	description << "C " << aName <<" " << center.getX() << " " << center.getY() << " " << radius;
 	return description.str();
 }

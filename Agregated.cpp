@@ -74,7 +74,5 @@ std::string Agregated::Display(std::string aName)
 			description << " " << it->first;
 		}
 	}
-	description << std::endl;
-
 	return description.str();
 }

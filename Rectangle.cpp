@@ -5,8 +5,6 @@
 // =====
 
 #include "Rectangle.h"
-#include <sstream>
-#include <iostream>
 
 Rectangle::Rectangle(Point *pSupG, Point *pInfD): PtSupG(pSupG) , PtInfD(pInfD)
 {
@@ -29,6 +27,6 @@ bool Rectangle::Move(int pX, int pY, int pCommandId)
 std::string Rectangle::Display(std::string aName)
 {
 	std::ostringstream description;
-	description << "R " << aName << " " << PtSupG->getX() << " " << PtSupG->getY() << " " << PtInfD->getX() << " " << PtInfD->getY() << std::endl; 
+	description << "R " << aName << " " << PtSupG->getX() << " " << PtSupG->getY() << " " << PtInfD->getX() << " " << PtInfD->getY(); 
 	return description.str();
 }

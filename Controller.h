@@ -39,10 +39,11 @@ class Controller
 		 * Vérifie que le nom donné existe. Vérifie dans le modèle que l'élément spécifié par son nom existe.
 		 *
 		 * \param name Le nom de l'élément
+		 * \param fileCommand Le FileCommand où chercher l'élément en cas d'ajout différé dans le modèle
 		 * \return Un pointeur vers l'élément s'il existe et 0 sinon.
 		 * \sa Model::Exists()
 		 */
-		GeoElt *Exists(std::string name);
+		GeoElt *Exists(std::string name, FileCommand *fileCommand = 0);
 
 	protected:
 		std::list<Command*> actions;

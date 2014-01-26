@@ -47,13 +47,11 @@ bool Line::Move(int pX, int pY, int pCommandId)
 std::string Line::Display(std::string aName)
 {
 	std::ostringstream description;
-  description << "L " << aName<<" " ;
+  description << "L " << aName;
 	for(std::list<Point*>::iterator it = ends.begin(); it != ends.end(); ++it)
   {
-		description << (*it)->getX() << " " << (*it)->getY() << " " ;
+		description << " " << (*it)->getX() << " " << (*it)->getY();
 	}
-	
-	description << std::endl;
 	return description.str();
 }
 

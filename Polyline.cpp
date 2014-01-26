@@ -51,12 +51,10 @@ bool Polyline::Move(int pX, int pY, int pCommandId)
 std::string Polyline::Display(std::string aName)
 {
 	std::ostringstream description;
-	description << "PL " << aName << " " ;
+	description << "PL " << aName;
   for(std::list<Point*>::iterator it = points.begin(); it != points.end(); ++ it)
   {
-		description << (*it)->getX() << " " << (*it)->getY() << " " ;
+		description << " " << (*it)->getX() << " " << (*it)->getY();
 	}
-	description << std::endl;
-
 	return description.str();
 }

@@ -223,7 +223,7 @@ void Controller::Clear()
 	model.Clear();
 }
 
-GeoElt *Controller::Exists(std::string pName)
+GeoElt *Controller::Exists(std::string pName, FileCommand* pFCommand)
 {
 	return model.Exists(pName);
 }

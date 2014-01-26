@@ -1,0 +1,11 @@
+OK
+OK
+OK
+OK
+OK
+OK
+OA agr circle line poly rectangle
+C circle 3 5 3
+L line 3 4 4 5
+PL poly 3 4 4 5 5 6 6 7
+R rectangle 3 5 5 7

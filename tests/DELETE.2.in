@@ -1,0 +1,9 @@
+C circle 1 2 3
+L line 1 1 2 2 
+PL poly 1 1 2 2 3 3 4 4
+OA agr circle line poly
+DELETE circle line
+LIST
+DELETE poly
+LIST
+EXIT

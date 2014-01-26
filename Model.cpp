@@ -122,7 +122,7 @@ void Model::List()
 	for(eltIt it = elements.begin(); it != elements.end(); ++it)
 	{
 		if(!it->second.deleted)
-			std::cout << it->second.element->Display(it->first);
+			std::cout << it->second.element->Display(it->first) << std::endl;
 	}
 }
 
