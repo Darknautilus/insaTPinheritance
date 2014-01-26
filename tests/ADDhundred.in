@@ -1,0 +1,101 @@
+C circle0 12 13 11
+C circle1 12 13 11
+C circle2 12 13 11
+C circle3 12 13 11
+C circle4 12 13 11
+C circle5 12 13 11
+C circle6 12 13 11
+C circle7 12 13 11
+C circle8 12 13 11
+C circle9 12 13 11
+C circle10 12 13 11
+C circle11 12 13 11
+C circle12 12 13 11
+C circle13 12 13 11
+C circle14 12 13 11
+C circle15 12 13 11
+C circle16 12 13 11
+C circle17 12 13 11
+C circle18 12 13 11
+C circle19 12 13 11
+C circle20 12 13 11
+C circle21 12 13 11
+C circle22 12 13 11
+C circle23 12 13 11
+C circle24 12 13 11
+R rectangle0 134 170 80 90
+R rectangle1 134 170 80 90
+R rectangle2 134 170 80 90
+R rectangle3 134 170 80 90
+R rectangle4 134 170 80 90
+R rectangle5 134 170 80 90
+R rectangle6 134 170 80 90
+R rectangle7 134 170 80 90
+R rectangle8 134 170 80 90
+R rectangle9 134 170 80 90
+R rectangle10 134 170 80 90
+R rectangle11 134 170 80 90
+R rectangle12 134 170 80 90
+R rectangle13 134 170 80 90
+R rectangle14 134 170 80 90
+R rectangle15 134 170 80 90
+R rectangle16 134 170 80 90
+R rectangle17 134 170 80 90
+R rectangle18 134 170 80 90
+R rectangle19 134 170 80 90
+R rectangle20 134 170 80 90
+R rectangle21 134 170 80 90
+R rectangle22 134 170 80 90
+R rectangle23 134 170 80 90
+R rectangle24 134 170 80 90
+OA agg0 circle0 rectangle0
+OA agg1 circle1 rectangle1
+OA agg2 circle2 rectangle2
+OA agg3 circle3 rectangle3
+OA agg4 circle4 rectangle4
+OA agg5 circle5 rectangle5
+OA agg6 circle6 rectangle6
+OA agg7 circle7 rectangle7
+OA agg8 circle8 rectangle8
+OA agg9 circle9 rectangle9
+OA agg10 circle10 rectangle10
+OA agg11 circle11 rectangle11
+OA agg12 circle12 rectangle12
+OA agg13 circle13 rectangle13
+OA agg14 circle14 rectangle14
+OA agg15 circle15 rectangle15
+OA agg16 circle16 rectangle16
+OA agg17 circle17 rectangle17
+OA agg18 circle18 rectangle18
+OA agg19 circle19 rectangle19
+OA agg20 circle20 rectangle20
+OA agg21 circle21 rectangle21
+OA agg22 circle22 rectangle22
+OA agg23 circle23 rectangle23
+OA agg24 circle24 rectangle24
+OA aggBis0 agg0 circle0
+OA aggBis1 agg1 circle1
+OA aggBis2 agg2 circle2
+OA aggBis3 agg3 circle3
+OA aggBis4 agg4 circle4
+OA aggBis5 agg5 circle5
+OA aggBis6 agg6 circle6
+OA aggBis7 agg7 circle7
+OA aggBis8 agg8 circle8
+OA aggBis9 agg9 circle9
+OA aggBis10 agg10 circle10
+OA aggBis11 agg11 circle11
+OA aggBis12 agg12 circle12
+OA aggBis13 agg13 circle13
+OA aggBis14 agg14 circle14
+OA aggBis15 agg15 circle15
+OA aggBis16 agg16 circle16
+OA aggBis17 agg17 circle17
+OA aggBis18 agg18 circle18
+OA aggBis19 agg19 circle19
+OA aggBis20 agg20 circle20
+OA aggBis21 agg21 circle21
+OA aggBis22 agg22 circle22
+OA aggBis23 agg23 circle23
+OA aggBis24 agg24 circle24
+exit

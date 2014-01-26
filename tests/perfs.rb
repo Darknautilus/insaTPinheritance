@@ -39,9 +39,5 @@ end
 program = "../bin/B3229"
 
 add = Benchmark.new(program,"ADD")
-add.run("ADDtenThousand.in",50,10000)
+add.run("ADDhundred.in",500,100)
 add.to_s
-
-load = Benchmark.new(program,"LOAD")
-load.run("LOADtenThousand.in",50,10000)
-load.to_s
