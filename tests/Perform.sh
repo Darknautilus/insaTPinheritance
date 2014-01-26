@@ -51,5 +51,4 @@ while test $no != $max
 done
 
 #AU Grand jamais oublier le exit !
-echo LIST >> $PerfomADD
 echo exit >> $PerfomADD
