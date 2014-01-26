@@ -37,4 +37,3 @@ PL polyline3 70 45 -40 60 77 97 88 87
 OA agregat1 circle1 line1 polyline3
 OA agregat3 rectangle1
 OA agregat4 polyline1 line1 agregat1
-OA agregat5 agregat4 agregat1

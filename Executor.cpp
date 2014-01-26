@@ -62,10 +62,10 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 				bool write = true;
 				if(std::ifstream(feedback->Args.front()).good())
 				{
-					std::cout << "Fichier exitant, écraser ? (o/N)";
+					std::cout << "File already exists, overwrite? (y/N)";
 					std::string input;
 					std::getline(std::cin,input);
-					if(input.compare("o") != 0)
+					if(input.compare("y") != 0)
 					{
 						write = false;
 					}
