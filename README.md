@@ -6,12 +6,12 @@ par Aurélien Bertron et Thomas Losbar
 Ce programme est un éditeur de dessin... en ligne de commande! L'utilisateur crée des formes géométriques à l'aide de commandes qu'il rentre dans l'application.
 
 # Compilation
-Compilation de base : `make` (exécutable dans le sous-répertoire bin)
-Nettoyage : `make clean`
-Nettoyage complet : `make mrproper`
-Exécution des tests : `make test`
-Création de la doc : `doxygen Doxyfile`
-Tests de performance : `ruby tests/perfs.rb`
+- Compilation de base : `make` (exécutable dans le sous-répertoire bin)
+- Nettoyage : `make clean`
+- Nettoyage complet : `make mrproper`
+- Exécution des tests : `make test`
+- Création de la doc : `doxygen Doxyfile`
+- Tests de performance : `ruby tests/perfs.rb`
 
 ## Ce qui marche
 - Ajout de formes (Cercles, Lignes, Polylignes, Rectangles, Objets Agrégés rassemblant d'autres formes)
