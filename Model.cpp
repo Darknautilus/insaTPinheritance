@@ -21,6 +21,7 @@ Model::~Model()
 bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 {
 	eltIt it = elements.find(pName);
+	// Ajout forcé
 	if(it == elements.end() && pHard)
 	{
 		ElementMarker em;
@@ -29,6 +30,7 @@ bool Model::Add(GeoElt *pElt, std::string pName, bool pHard)
 		elements.insert(make_pair(pName,em));		
 		return true;
 	}
+	// Ajout simple
 	else if(it->second.deleted && !pHard)
 	{
 		it->second.deleted = false;
@@ -59,6 +61,7 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 		{
 			element = it->second.element;
 			std::list<Agregated*> agr = element->GetAgregated();
+			// Suppression forcée
 			if(pHard)
 			{
 				elements.erase(it);
@@ -69,6 +72,7 @@ GeoElt* Model::Delete(std::string pName, bool pHard)
 					(*it)->Delete(pName);
 				}
 			}
+			// Suppression simple
 			else
 			{
 				it->second.deleted = true;

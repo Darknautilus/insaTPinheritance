@@ -19,6 +19,8 @@ int main(int argc, const char **argv)
 	bool again = true;
 	while(again)
 	{
+		// Permet de n'afficher les >> que si c'est un humain qui utilise le programme
+		// Attention, isatty n'est pas portable sur Windows
 		if(isatty(STDOUT_FILENO))
 		{
 			std::cout << ">> " << std::flush;

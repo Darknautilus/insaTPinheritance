@@ -27,10 +27,39 @@ class Model
 		Model();
 		virtual ~Model();
 
-		bool Add(GeoElt*, std::string, bool = false);
-		GeoElt* Delete(std::string, bool = false);
-		GeoElt* Move(std::string, Point*, int);
-		bool SaveInFile(std::string);
+		/**
+		 * Ajoute un élément au modèle. Deux modes d'ajout sont disponibles : ajout simple ou forcé. L'ajout simple est utilisé si l'on n'insère pas de nouvel élément dans le modèle (lors du Undo d'une command DELETE, par exemple). L'ajout forcé est utilisé lors d'une commande ADD.
+		 * \param element L'élément à ajouter
+		 * \param name Le nom à donner à l'élément
+		 * \param force Forcer l'ajout ou non
+		 * \return true si l'ajout s'est bien déroulé et false sinon
+		 * \sa Controller::Add()
+		 */
+		bool Add(GeoElt *element, std::string name, bool force = false);
+		/**
+		 * Supprime un élément du modèle. Comme dans Model::Add(), deux modes de suppression sont disponibles : simple ou forcé. La suppression simple est utilisée dans la plupart des cas, et marque l'élément comme supprimé (cf. ElementMarker) mais ne le retire pas à proprement parler du modèle. La suppression forcée est utilisée principalement dans le destructeur de AddCommand.
+		 * \param name Le nom de l'élément à supprimer
+		 * \param force Forcer la suppression ou non
+		 * \return Un pointeur vers l'élément supprimé si tout s'est bien passé et 0 sinon
+		 * \sa Controller::Delete()
+		 */
+		GeoElt* Delete(std::string name, bool force = false);
+		/**
+		 * Déplace un élément.
+		 * \param name Le nom de l'élément à déplacer
+		 * \param direction Le vecteur de déplacement
+		 * \param commandId L'id de la commande qui a appelé la méthode. Cf. GeoElt::Move()
+		 * \return Un pointeur vers l'élément déplacé si tout s'est bien passé et 0 sinon
+		 * \sa Controller::Move(), GeoElt::Move()
+		 */
+		GeoElt* Move(std::string name, Point *direction, int commandId);
+		/**
+		 * Sauvegarde le contenu du modèle dans un fichier. Cette méthode appelle simplement la méthode Display() sur tous les éléments du modèle.
+		 * \param filename
+		 * \return true si tout s'est bien déroulé et false sinon
+		 * \sa GeoElt::Display()
+		 */
+		bool SaveInFile(std::string filename);
 		void List();
 		void Clear();
 		/**

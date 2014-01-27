@@ -23,6 +23,11 @@ bool Executor::Execute(CommandFeedback *feedback, FileCommand *pFCommand)
 {
 	if(feedback->Status == CommandStatus::OK)
 	{
+		/*
+		 *
+		 * Énumération de tous les codes commandes
+		 *
+		 */
 		if(feedback->Code == CommandCode::EXIT)
 		{
 			return false;

@@ -8,6 +8,7 @@
 
 Interpreter::Interpreter()
 {
+	// Initialise la base de données de commandes connues
 	commandName[std::string("C")] = CommandCode::CIRCLE;
 		commandInfos[CommandCode::CIRCLE] = new CommandInfo(4);
 	commandName[std::string("R")] = CommandCode::RECTANGLE;
@@ -48,11 +49,11 @@ Interpreter::~Interpreter()
 	}
 }
 
-// Assume that the given string is not empty
 CommandFeedback* Interpreter::Read(std::string pLine)
 {
 	std::istringstream iss(pLine);
 	CommandFeedback *feedback = new CommandFeedback();
+	// Splitte la chaîne en deque de string selon les espaces
 	std::copy(std::istream_iterator<std::string>(iss),
 							std::istream_iterator<std::string>(),
 							std::back_inserter<std::deque<std::string>>(feedback->Args));
@@ -80,6 +81,7 @@ CommandFeedback* Interpreter::Read(std::string pLine)
 
 CommandCode Interpreter::getCodeFromStr(std::string pKey)
 {
+	// Dé-sensibilise à la casse
 	std::transform(pKey.begin(),pKey.end(),pKey.begin(),::toupper);
 	std::map<std::string,CommandCode>::iterator it = commandName.find(pKey);
 	if(it == commandName.end())

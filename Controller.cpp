@@ -33,9 +33,11 @@ bool Controller::Add(std::string pName, GeoElt *pElement, FileCommand *pFCommand
 	AddCommand *command = new AddCommand(&model, names, elements);
 	if(pFCommand == 0)
 	{
+		// Exécution de la commande
 		bool commandValid = command->Do();
 		if(commandValid)
 		{
+			// Si l'on ne pointe pas sur la dernière commande, on supprime les commandes qui suivent
 			if(currAction != actions.rbegin())
 			{
 				for(std::list<Command*>::reverse_iterator it = actions.rbegin();
@@ -129,6 +131,7 @@ bool Controller::LoadFromFile(std::string pFilename, Interpreter *pInterpreter, 
 	if(inputFile.good())
 	{
 		command = new FileCommand(&model);
+		// On lit le fichier ligne par ligne et on exécute (voir insaInherit.cpp pour le même fonctionnement)
 		std::getline(inputFile,line);
 		while(!inputFile.eof() && !inputFile.fail())
 		{

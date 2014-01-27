@@ -26,10 +26,45 @@ class Controller
 		Controller();
 		virtual ~Controller();
 
-		bool Add(std::string,GeoElt*,FileCommand* = 0);
-		bool Delete(std::vector<std::string>,FileCommand* = 0);
-		bool Move(std::string,Point&,FileCommand* = 0);
-		bool LoadFromFile(std::string, Interpreter*, Executor*);
+		/**
+		 * Ajoute un élément.
+		 * \param nom Le nom à donner à l'élément
+		 * \param element L'élément à ajouter
+		 * \param file cf. Executor::Execute()
+		 * \return true si l'ajout s'est bien déroulé et false sinon
+		 * \sa Model::Add()
+		 */
+		bool Add(std::string,GeoElt *element,FileCommand *file = 0);
+		/**
+		 * Supprime un ou plusieurs éléments.
+		 * \param names Les noms des éléments à supprimer
+		 * \param file cf. Controller::Add()
+		 * \return true si la suppression s'est bien faite et false sinon
+		 * \sa Model::Delete()
+		 */
+		bool Delete(std::vector<std::string> names,FileCommand *file = 0);
+		/**
+		 * Déplace un élément.
+		 * \param name Le nom de l'élément à déplacer
+		 * \param direction Le vecteur de translation
+		 * \param file cd. Controller::Add()
+		 * \return true si le déplacement s'est bien fait et false sinon
+		 * \sa Model::Move()
+		 */
+		bool Move(std::string name,Point& direction,FileCommand *file = 0);
+		/**
+		 * Charge le fichier et interprète son contenu.
+		 * \param filename Le nom du fichier à charger
+		 * \param interpreter L'interpréteur à utiliser pour lire le contenu
+		 * \param executor L'executeur à utiliser pour exécuter les commandes du fichier
+		 * \return true si le chargement s'est bien déroulé et false sinon
+		 * \sa Controller::SaveInFile()
+		 */
+		bool LoadFromFile(std::string filename, Interpreter *interpreter, Executor *executor);
+		/**
+		 * cf. Model::SaveInFile()
+		 * \sa Controller::LoadFromFile()
+		 */
 		bool SaveInFile(std::string);
 		bool Undo();
 		bool Redo();
