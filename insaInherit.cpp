@@ -23,10 +23,10 @@ int main(int argc, const char **argv)
 		// Attention, isatty n'est pas portable sur Windows
 		if(isatty(STDOUT_FILENO))
 		{
-			std::cout << ">> " << std::flush;
+			std::cout << constants::INPUT_MARK << std::flush;
 		}
 		std::getline(std::cin,input);
-		if(!input.empty())
+		if(!input.empty() && input.at(0) != constants::COMMENT_CHAR)
 		{
 			feedback = inter.Read(input);
 			again = executor.Execute(feedback);
